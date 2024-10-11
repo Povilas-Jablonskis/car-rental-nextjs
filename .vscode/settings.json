@@ -1,0 +1,13 @@
+{
+  "javascript.validate.enable": false,
+  "[javascript, typescript, typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.codeActionsOnSave.mode": "problems",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.wordWrapColumn": 100,
+  "prettier.printWidth": 100
+}
