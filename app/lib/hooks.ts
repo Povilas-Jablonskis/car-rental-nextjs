@@ -8,11 +8,25 @@ export interface CarListResponse {
   pageNumber: number | null;
 }
 
-export function useGetCarList(popular: boolean) {
+export function useGetPopularCarList(pageSize: number) {
   return useInfiniteQuery<CarListResponse>({
-    queryKey: ["fetchCars", popular],
+    queryKey: ["fetchPopularCars"],
     queryFn: async ({ pageParam }) => {
-      const response = await fetch(`/api/cars/${pageParam}/${popular}`);
+      const response = await fetch(`/api/cars/1?pageNumber=${pageParam}&pageSize=${pageSize}`);
+      const result = await response.json();
+      return result;
+    },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => lastPage.pageNumber,
+    refetchOnWindowFocus: false,
+  });
+}
+
+export function useGetRecommendedCarList(pageSize: number) {
+  return useInfiniteQuery<CarListResponse>({
+    queryKey: ["fetchRecommendedCars"],
+    queryFn: async ({ pageParam }) => {
+      const response = await fetch(`/api/cars/0?pageNumber=${pageParam}&pageSize=${pageSize}`);
       const result = await response.json();
       return result;
     },

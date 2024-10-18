@@ -1,7 +1,10 @@
-import { ITEMS_PER_PAGE } from "@/app/lib/data";
 import ListItemSkeleton from "../listItemSkeleton";
 
-export default function CarListSkeleton() {
+interface PopularCarListSkeletonProps {
+  totalCars: number;
+}
+
+export default function PopularCarListSkeleton({ totalCars }: PopularCarListSkeletonProps) {
   return (
     <div>
       <div className="flex place-content-between mb-8">
@@ -11,7 +14,7 @@ export default function CarListSkeleton() {
         </button>
       </div>
       <div className="grid grid-cols-4 gap-8">
-        {[...Array(ITEMS_PER_PAGE)].map((_, idx) => (
+        {[...Array(totalCars)].map((_, idx) => (
           <ListItemSkeleton key={idx} />
         ))}
       </div>

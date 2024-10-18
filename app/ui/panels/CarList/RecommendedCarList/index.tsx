@@ -1,17 +1,18 @@
 "use client";
 
-import { useGetCarList } from "@/app/lib/hooks";
+import { useGetRecommendedCarList } from "@/app/lib/hooks";
 import PrimaryButton from "@/app/ui/buttons/primaryButton";
 import CarList from "..";
-import CarListSkeleton from "./skeleton";
+import RecommendedCarListSkeleton from "./skeleton";
 
 export default function RecommendedCarList() {
-  const popular = false;
-  const { data, isFetching, fetchNextPage, hasNextPage } = useGetCarList(popular);
+  const pageSize = 8;
+  const { data, isFetching, fetchNextPage, hasNextPage } = useGetRecommendedCarList(pageSize);
 
-  const totalCars = data?.pages.flatMap((x) => x.data).length;
+  let totalCars = data?.pages.flatMap((x) => x.data).length;
+  totalCars = totalCars != null ? totalCars : pageSize;
 
-  if (isFetching) return <CarListSkeleton totalCars={totalCars} />;
+  if (isFetching) return <RecommendedCarListSkeleton totalCars={totalCars} />;
 
   return (
     <div>

@@ -1,12 +1,11 @@
-import { ITEMS_PER_PAGE } from "@/app/lib/data";
 import PrimaryButton from "../../../buttons/primaryButton";
 import ListItemSkeleton from "../listItemSkeleton";
 
-interface CarListSkeletonProps {
-  totalCars: number | undefined;
+interface RecommendedCarListSkeletonProps {
+  totalCars: number;
 }
 
-export default function CarListSkeleton({ totalCars = ITEMS_PER_PAGE }: CarListSkeletonProps) {
+export default function RecommendedCarListSkeleton({ totalCars }: RecommendedCarListSkeletonProps) {
   return (
     <div>
       <div className="flex place-content-between mb-8">

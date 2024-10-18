@@ -10,11 +10,11 @@ import HeartIcon from "../../icons/heart";
 import SeatsIcon from "../../icons/seats";
 import TankSizeIcon from "../../icons/tankSize";
 
-interface DivProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   car: Car;
 }
 
-export default function ListItem({ car, ...rest }: DivProps) {
+export default function ListItem({ car, ...rest }: ListItemProps) {
   const [favourite, setFavourite] = useState(false);
 
   return (

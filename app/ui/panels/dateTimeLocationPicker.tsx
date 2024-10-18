@@ -2,11 +2,11 @@ import Picker from "../controls/picker";
 import Radio from "../controls/radio";
 import Select from "../controls/select";
 
-interface DivProps extends React.HTMLAttributes<HTMLDivElement> {
+interface DateTimeLocationPickerProps extends React.HTMLAttributes<HTMLDivElement> {
   label?: string;
 }
 
-export default function DateTimeLocationPicker({ label, ...rest }: DivProps) {
+export default function DateTimeLocationPicker({ label, ...rest }: DateTimeLocationPickerProps) {
   return (
     <div {...rest} className="grid gap-y-4 bg-white rounded-lg py-6 px-12">
       <Radio id={label} label={label} />
