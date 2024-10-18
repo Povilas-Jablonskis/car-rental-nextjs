@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Suspense } from "react";
 import car7 from "../public/images/car7.png";
 import car8 from "../public/images/car8.png";
 import PrimaryButton from "./ui/buttons/primaryButton";
@@ -8,16 +7,9 @@ import SwapIcon from "./ui/icons/swap";
 import Ad from "./ui/panels/ad";
 import PopularCarList from "./ui/panels/CarList/PopularCarList";
 import RecommendedCarList from "./ui/panels/CarList/RecommendedCarList";
-import CarListSkeleton from "./ui/panels/CarList/skeleton";
 import DateTimeLocationPicker from "./ui/panels/dateTimeLocationPicker";
 
-interface HomePageProps {
-  searchParams?: { showAllRecommendedCars?: string };
-}
-
-export default async function Home({ searchParams }: HomePageProps) {
-  const showAllRecommendedCars = Number(searchParams?.showAllRecommendedCars) || 0;
-
+export default async function Home() {
   return (
     <>
       <div className="grid grid-cols-2 gap-8 mb-8">
@@ -46,24 +38,8 @@ export default async function Home({ searchParams }: HomePageProps) {
         <DateTimeLocationPicker label="Drop - Off" />
       </div>
       <div className="grid gap-y-8">
-        <div>
-          <div className="flex place-content-between mb-8">
-            <span className="text-secondary-300 font-semibold text-base">Popular Cars</span>
-            <button className="text-primary-500 font-semibold text-base text-end">View All</button>
-          </div>
-          <Suspense key={JSON.stringify(searchParams)} fallback={<CarListSkeleton />}>
-            <PopularCarList />
-          </Suspense>
-        </div>
-
-        <div>
-          <div className="flex place-content-between mb-8">
-            <span className="text-secondary-300 font-semibold text-base">Recommended Cars</span>
-          </div>
-          <Suspense key={JSON.stringify(searchParams)} fallback={<CarListSkeleton />}>
-            <RecommendedCarList showAllRecommendedCars={showAllRecommendedCars} />
-          </Suspense>
-        </div>
+        <PopularCarList />
+        <RecommendedCarList />
       </div>
     </>
   );

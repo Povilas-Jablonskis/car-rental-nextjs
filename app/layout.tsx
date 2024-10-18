@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Providers from "./providers";
 import { plus_jakarta_sans } from "./ui/fonts";
 import Footer from "./ui/footer";
 import Header from "./ui/header";
@@ -14,9 +15,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${plus_jakarta_sans.className} text-sm`}>
         <div className="flex flex-col h-screen">
-          <Header />
-          <div className="bg-[#F6F7F9] flex-1 py-8 pb-16 px-16">{children}</div>
-          <Footer />
+          <Providers>
+            <Header />
+            <div className="bg-[#F6F7F9] flex-1 py-8 pb-16 px-16">{children}</div>
+            <Footer />
+          </Providers>
         </div>
       </body>
     </html>

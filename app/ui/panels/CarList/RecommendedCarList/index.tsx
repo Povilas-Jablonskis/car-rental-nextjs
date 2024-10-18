@@ -1,27 +1,35 @@
-import { fetchCars, ITEMS_PER_PAGE } from "@/app/lib/data";
+"use client";
+
+import { useGetCarList } from "@/app/lib/hooks";
+import PrimaryButton from "@/app/ui/buttons/primaryButton";
 import CarList from "..";
-import ShowMoreLessButton from "../showMoreLessButton";
+import CarListSkeleton from "./skeleton";
 
-interface RecommendedCarListProps {
-  showAllRecommendedCars: number;
-}
+export default function RecommendedCarList() {
+  const popular = false;
+  const { data, isFetching, fetchNextPage, hasNextPage } = useGetCarList(popular);
 
-export default async function RecommendedCarList({
-  showAllRecommendedCars,
-}: RecommendedCarListProps) {
-  const cars = (await fetchCars()).filter((x) => !x.popular);
-  const totalCars = cars.length;
-  const itemsPerPage = showAllRecommendedCars ? totalCars : ITEMS_PER_PAGE;
-  const filteredCars = cars.splice(0, itemsPerPage);
+  const totalCars = data?.pages.flatMap((x) => x.data).length;
+
+  if (isFetching) return <CarListSkeleton totalCars={totalCars} />;
 
   return (
     <div>
-      <CarList cars={filteredCars} />
+      <div className="flex place-content-between mb-8">
+        <span className="text-secondary-300 font-semibold text-base">Recommended Cars</span>
+      </div>
+      <CarList data={data} />
       <div className="flex place-items-center pt-16">
-        <ShowMoreLessButton showAllRecommendedCars={showAllRecommendedCars} />
-        <span className="text-secondary-300 font-medium">
-          {totalCars} {totalCars > 1 ? "cars" : "car"}
-        </span>
+        {hasNextPage && (
+          <PrimaryButton
+            size="lg"
+            className="mx-auto"
+            disabled={isFetching}
+            onClick={() => fetchNextPage()}
+          >
+            Show more cars
+          </PrimaryButton>
+        )}
       </div>
     </div>
   );
