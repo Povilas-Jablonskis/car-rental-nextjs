@@ -8,8 +8,8 @@ export default function RentalCarButton({
     <button
       {...rest}
       className={clsx(
-        "hover:bg-transparent border border-transparent hover:border-white py-[10px] px-5 text-base font-semibold rounded",
-        className
+        "rounded border border-transparent px-5 py-[10px] text-base font-semibold hover:border-white hover:bg-transparent",
+        className,
       )}
     >
       Rental Car

@@ -10,10 +10,10 @@ import NotificationsButton from "./notificationsButton";
 
 export default function Header() {
   return (
-    <header className="min-h-[123px] px-16 py-10 border-navbar border-opacity-40 border">
+    <header className="min-h-[123px] border border-navbar/40 px-16 py-10">
       <div className="flex place-content-between">
         <div className="flex items-center gap-16">
-          <span className="text-primary-500 text-2base font-bold">
+          <span className="text-2base font-bold text-primary-500">
             <Link href="/">MORENT</Link>
           </span>
           <SearchInput />

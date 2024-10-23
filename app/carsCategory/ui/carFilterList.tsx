@@ -16,7 +16,12 @@ export default function CarFilterList({ searchParams }: CarFilterListProps) {
   totalCars = totalCars != null ? totalCars : pageSize;
 
   if (isLoading)
-    return <CarListSkeleton className="grid grid-cols-3 gap-8" totalCars={totalCars} />;
+    return (
+      <CarListSkeleton
+        className="grid grid-cols-3 gap-8"
+        totalCars={totalCars}
+      />
+    );
 
   return <CarList className="grid grid-cols-3 gap-8" data={data} />;
 }

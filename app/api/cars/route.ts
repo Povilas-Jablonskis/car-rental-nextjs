@@ -16,7 +16,9 @@ export async function GET(request: NextRequest) {
     const types = typesRaw ? typesRaw.split(",") : undefined;
 
     const seatsRaw = searchParams.get("seats");
-    const seats = seatsRaw ? seatsRaw.split(",").map((x) => Number(x)) : undefined;
+    const seats = seatsRaw
+      ? seatsRaw.split(",").map((x) => Number(x))
+      : undefined;
 
     const priceRaw = searchParams.get("price");
     const price = priceRaw ? Number(priceRaw) : undefined;
@@ -41,9 +43,14 @@ export async function GET(request: NextRequest) {
 
     const nextPageNumberCandidate = currentPageNumber + 1;
     const nextPageNumber =
-      nextPageNumberCandidate * pageSize < Number(count) ? nextPageNumberCandidate : null;
+      nextPageNumberCandidate * pageSize < Number(count)
+        ? nextPageNumberCandidate
+        : null;
 
-    return NextResponse.json<CarListResponse>({ data: cars, pageNumber: nextPageNumber });
+    return NextResponse.json<CarListResponse>({
+      data: cars,
+      pageNumber: nextPageNumber,
+    });
   } catch (error) {
     if (isDynamicServerError(error)) {
       throw error;

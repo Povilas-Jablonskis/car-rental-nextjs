@@ -43,7 +43,7 @@ export default function ListOfTypes() {
 
   return (
     <div className="grid gap-y-7">
-      <p className="text-secondary-300 text-xs font-semibold">T Y P E</p>
+      <p className="text-xs font-semibold text-secondary-300">T Y P E</p>
       {Object.entries(data || {}).map(([name, value], idx) => (
         <Checkbox
           key={idx}
@@ -54,12 +54,12 @@ export default function ListOfTypes() {
         >
           <label
             htmlFor={name}
-            className="text-start text-secondary-400 text-xl font-semibold hover:cursor-pointer"
+            className="text-start text-xl font-semibold text-secondary-400 hover:cursor-pointer"
           >
             {name}{" "}
             <label
               htmlFor={name}
-              className="text-start text-secondary-300 text-xl font-semibold hover:cursor-pointer"
+              className="text-start text-xl font-semibold text-secondary-300 hover:cursor-pointer"
             >
               ({value})
             </label>

@@ -7,13 +7,19 @@ import CarListSkeleton from "../skeleton";
 
 export default function RecommendedCarList() {
   const pageSize = 8;
-  const { data, isLoading, fetchNextPage, hasNextPage } = useGetRecommendedCarList(pageSize);
+  const { data, isLoading, fetchNextPage, hasNextPage } =
+    useGetRecommendedCarList(pageSize);
 
   let totalCars = data?.pages.flatMap((x) => x.data).length;
   totalCars = totalCars != null ? totalCars : pageSize;
 
   if (isLoading)
-    return <CarListSkeleton className="grid grid-cols-4 gap-8" totalCars={totalCars} />;
+    return (
+      <CarListSkeleton
+        className="grid grid-cols-4 gap-8"
+        totalCars={totalCars}
+      />
+    );
 
   return (
     <>

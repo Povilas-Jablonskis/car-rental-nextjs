@@ -12,9 +12,7 @@ export default function CarList({ data, ...rest }: CarListProps) {
     <div {...rest}>
       {data?.pages.map((group, i) => (
         <Fragment key={i}>
-          {group?.data.map((car) => (
-            <ListItem key={car.id} car={car} />
-          ))}
+          {group?.data.map((car) => <ListItem key={car.id} car={car} />)}
         </Fragment>
       ))}
     </div>

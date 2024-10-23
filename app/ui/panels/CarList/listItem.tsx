@@ -23,9 +23,9 @@ export default function ListItem({ car, ...rest }: ListItemProps) {
   const [favourite, setFavourite] = useState(false);
 
   return (
-    <div {...rest} className="flex flex-col rounded-xl bg-white p-6 min-h-96">
+    <div {...rest} className="flex min-h-96 flex-col rounded-xl bg-white p-6">
       <div className="flex place-content-between">
-        <span className="text-secondary-500 font-bold text-xl">{car.name}</span>
+        <span className="text-xl font-bold text-secondary-500">{car.name}</span>
         <button onClick={() => setFavourite((x) => !x)}>
           <HeartIcon
             className={clsx({
@@ -35,7 +35,7 @@ export default function ListItem({ car, ...rest }: ListItemProps) {
           />
         </button>
       </div>
-      <span className="text-secondary-300 font-bold">{car.type}</span>
+      <span className="font-bold text-secondary-300">{car.type}</span>
       <Image
         width={0}
         height={0}
@@ -45,30 +45,34 @@ export default function ListItem({ car, ...rest }: ListItemProps) {
         src={car.image}
         alt="Car"
       />
-      <div className="flex place-content-between mb-6">
-        <div className="flex gap-1.5 items-center">
+      <div className="mb-6 flex place-content-between">
+        <div className="flex items-center gap-1.5">
           <TankSizeIcon />
-          <span className="text-secondary-300 font-medium">{car.fuelTank}L</span>
+          <span className="font-medium text-secondary-300">
+            {car.fuelTank}L
+          </span>
         </div>
-        <div className="flex gap-1.5 items-center">
+        <div className="flex items-center gap-1.5">
           <GearTypeIcon />
-          <span className="text-secondary-300 font-medium">{car.gear}</span>
+          <span className="font-medium text-secondary-300">{car.gear}</span>
         </div>
-        <div className="flex gap-1.5 items-center">
+        <div className="flex items-center gap-1.5">
           <SeatsIcon />
-          <span className="text-secondary-300 font-medium">
+          <span className="font-medium text-secondary-300">
             {car.seats} {car.seats > 1 ? "Persons" : "Person"}
           </span>
         </div>
       </div>
       <div className="flex place-content-between">
         <div className="grid place-content-center">
-          <span className="text-xl text-secondary-500 font-bold">
+          <span className="text-xl font-bold text-secondary-500">
             {USDollar.format(+car.price)}/
-            <span className="text-sm text-secondary-300 font-bold">day</span>
+            <span className="text-sm font-bold text-secondary-300">day</span>
           </span>
           {car.oldPrice != null && (
-            <s className="text-secondary-300 font-bold">{USDollar.format(+car.oldPrice)}</s>
+            <s className="font-bold text-secondary-300">
+              {USDollar.format(+car.oldPrice)}
+            </s>
           )}
         </div>
         <PrimaryButton size="lg">Rent Now</PrimaryButton>

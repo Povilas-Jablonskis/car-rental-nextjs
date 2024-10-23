@@ -44,7 +44,9 @@ export default function ListOfSeats() {
 
   return (
     <div className="grid gap-y-7">
-      <p className="text-secondary-300 text-xs font-semibold">C A P A C I T Y</p>
+      <p className="text-xs font-semibold text-secondary-300">
+        C A P A C I T Y
+      </p>
       {Object.entries(data || {}).map(([name, value], idx) => (
         <Checkbox
           key={idx}
@@ -55,12 +57,12 @@ export default function ListOfSeats() {
         >
           <label
             htmlFor={name}
-            className="text-start text-secondary-400 text-xl font-semibold hover:cursor-pointer"
+            className="text-start text-xl font-semibold text-secondary-400 hover:cursor-pointer"
           >
             {CarSeat[Number(name)]}{" "}
             <label
               htmlFor={name}
-              className="text-start text-secondary-300 text-xl font-semibold hover:cursor-pointer"
+              className="text-start text-xl font-semibold text-secondary-300 hover:cursor-pointer"
             >
               ({value})
             </label>

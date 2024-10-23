@@ -11,15 +11,20 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   options?: OptionExample[];
 }
 
-export default function Select({ label, placeholder, options, ...rest }: SelectProps) {
+export default function Select({
+  label,
+  placeholder,
+  options,
+  ...rest
+}: SelectProps) {
   return (
     <div className="grid gap-y-2">
-      <label className="font-bold text-base">{label}</label>
-      <div className="flex gap-x-2 items-center">
+      <label className="text-base font-bold">{label}</label>
+      <div className="flex items-center gap-x-2">
         <select
           {...rest}
           defaultValue=""
-          className="text-secondary-300 font-medium text-xs bg-transparent appearance-none cursor-pointer"
+          className="cursor-pointer appearance-none bg-transparent text-xs font-medium text-secondary-300"
         >
           <option value="">{placeholder}</option>
           {options?.map(({ key, value }, idx) => (

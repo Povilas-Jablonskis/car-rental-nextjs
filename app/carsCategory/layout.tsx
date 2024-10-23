@@ -5,7 +5,7 @@ import SelectPrice from "./ui/selectPrice";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex bg-[#F6F7F9]">
-      <div className="flex flex-col gap-y-14 min-w-80 bg-white p-8">
+      <div className="flex min-w-80 flex-col gap-y-14 bg-white p-8">
         <ListOfTypes />
         <ListOfSeats />
         <SelectPrice />

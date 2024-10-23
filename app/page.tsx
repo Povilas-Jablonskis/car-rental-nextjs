@@ -16,8 +16,8 @@ export default function Home() {
   const { push } = useRouter();
 
   return (
-    <div className="bg-[#F6F7F9] py-8 pb-16 px-16">
-      <div className="grid grid-cols-2 gap-8 mb-8">
+    <div className="bg-[#F6F7F9] px-16 py-8 pb-16">
+      <div className="mb-8 grid grid-cols-2 gap-8">
         <Ad
           title="The Best Platform for Car Rental"
           subTitle="Ease of doing a car rental safely and reliably. Of course at a low price."
@@ -35,9 +35,9 @@ export default function Home() {
           <Image className="mx-auto" priority src={car8} alt="Car" />
         </Ad>
       </div>
-      <div className="grid grid-flow-col auto-cols-[1fr_max-content_1fr] gap-11 mb-9">
+      <div className="mb-9 grid auto-cols-[1fr_max-content_1fr] grid-flow-col gap-11">
         <DateTimeLocationPicker label="Pick - Up" />
-        <PrimaryButton className="!p-[17px] self-center shadow-[0_0_50px_11px_rgba(16,50,147,0.28)]">
+        <PrimaryButton className="self-center !p-[17px] shadow-[0_0_50px_11px_rgba(16,50,147,0.28)]">
           <SwapIcon />
         </PrimaryButton>
         <DateTimeLocationPicker label="Drop - Off" />
@@ -45,7 +45,9 @@ export default function Home() {
       <div className="grid gap-y-8">
         <div>
           <div className="mb-8 flex place-content-between">
-            <span className="text-base font-semibold text-secondary-300">Popular Cars</span>
+            <span className="text-base font-semibold text-secondary-300">
+              Popular Cars
+            </span>
             <button
               className="text-end text-base font-semibold text-primary-500"
               onClick={() => push("/carsCategory")}
@@ -57,7 +59,9 @@ export default function Home() {
         </div>
         <div>
           <div className="mb-8 flex place-content-between">
-            <span className="text-base font-semibold text-secondary-300">Recommended Cars</span>
+            <span className="text-base font-semibold text-secondary-300">
+              Recommended Cars
+            </span>
           </div>
           <RecommendedCarList />
         </div>

@@ -13,7 +13,7 @@ export function useGetPopularCarList(pageSize: number) {
     queryKey: ["fetchPopularCars", pageSize],
     queryFn: async ({ pageParam }) => {
       const response = await fetch(
-        `/api/cars?pageNumber=${pageParam}&pageSize=${pageSize}&popular=1`
+        `/api/cars?pageNumber=${pageParam}&pageSize=${pageSize}&popular=1`,
       );
       const result = await response.json();
       return result;
@@ -29,7 +29,7 @@ export function useGetRecommendedCarList(pageSize: number) {
     queryKey: ["fetchRecommendedCars", pageSize],
     queryFn: async ({ pageParam }) => {
       const response = await fetch(
-        `/api/cars?pageNumber=${pageParam}&pageSize=${pageSize}&popular=0`
+        `/api/cars?pageNumber=${pageParam}&pageSize=${pageSize}&popular=0`,
       );
       const result = await response.json();
       return result;
@@ -40,13 +40,16 @@ export function useGetRecommendedCarList(pageSize: number) {
   });
 }
 
-export function useGetCategoryCarList(pageSize: number, searchParams: Record<string, string>) {
+export function useGetCategoryCarList(
+  pageSize: number,
+  searchParams: Record<string, string>,
+) {
   return useInfiniteQuery<CarListResponse>({
     queryKey: ["fetchCategoryCars", pageSize, searchParams],
     queryFn: async ({ pageParam }) => {
       const params = new URLSearchParams(searchParams);
       const response = await fetch(
-        `/api/cars?pageNumber=${pageParam}&pageSize=${pageSize}&${params.toString()}`
+        `/api/cars?pageNumber=${pageParam}&pageSize=${pageSize}&${params.toString()}`,
       );
       const result = await response.json();
       return result;

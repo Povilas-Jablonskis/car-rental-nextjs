@@ -47,11 +47,22 @@ export default function SelectPrice() {
 
   return (
     <div className="grid gap-y-7">
-      <p className="text-secondary-300 text-xs font-semibold">P R I C E</p>
+      <p className="text-xs font-semibold text-secondary-300">P R I C E</p>
       <div className="flex flex-col gap-3">
-        <Input type="number" ref={inputRef} defaultValue={price} onChange={onChange} />
-        <Range ref={rangeInputRef} min={min} max={max} defaultValue={price} onChange={onChange} />
-        <p className="text-secondary-400 text-xl font-semibold">Max. $100.00</p>
+        <Input
+          type="number"
+          ref={inputRef}
+          defaultValue={price}
+          onChange={onChange}
+        />
+        <Range
+          ref={rangeInputRef}
+          min={min}
+          max={max}
+          defaultValue={price}
+          onChange={onChange}
+        />
+        <p className="text-xl font-semibold text-secondary-400">Max. $100.00</p>
       </div>
     </div>
   );

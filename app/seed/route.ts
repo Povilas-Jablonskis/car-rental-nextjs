@@ -8,7 +8,17 @@ async function seedCars() {
 
   const insertedCars = await Promise.all(
     cars.map(
-      async ({ name, image, type, gear, fuelTank: fuelTank, seats, popular, price, oldPrice }) => {
+      async ({
+        name,
+        image,
+        type,
+        gear,
+        fuelTank: fuelTank,
+        seats,
+        popular,
+        price,
+        oldPrice,
+      }) => {
         return prisma.cars.create({
           data: {
             name,
@@ -22,8 +32,8 @@ async function seedCars() {
             oldPrice,
           },
         });
-      }
-    )
+      },
+    ),
   );
 
   return insertedCars;

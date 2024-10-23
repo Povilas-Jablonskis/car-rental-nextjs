@@ -8,11 +8,11 @@
 
 @layer components {
   input[type="range"] {
-    @apply appearance-none overflow-hidden h-3 w-full cursor-pointer bg-primary-500 rounded-full;
+    @apply h-3 w-full cursor-pointer appearance-none overflow-hidden rounded-full bg-primary-500;
   }
 
   input[type="range"]::-webkit-slider-thumb {
-    @apply appearance-none w-5 h-5 border-4 border-white border-solid rounded-full bg-primary-500;
-    box-shadow: 405px 0 0 400px #90A3BF;
+    @apply h-5 w-5 appearance-none rounded-full border-4 border-solid border-white bg-primary-500;
+    box-shadow: 405px 0 0 400px #90a3bf;
   }
 }
