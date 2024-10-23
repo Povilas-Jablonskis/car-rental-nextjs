@@ -44,7 +44,7 @@
     }
   },
   "lint-staged": {
-    "app/**/*.(js|jsx|ts|tsx|jsmo)": [
+    "**/*": [
       "prettier --write",
       "next lint --fix",
       "git add"
