@@ -8,6 +8,4 @@
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "explicit"
   },
-  "editor.wordWrapColumn": 100,
-  "prettier.printWidth": 100
 }
