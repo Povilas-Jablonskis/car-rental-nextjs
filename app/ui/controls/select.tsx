@@ -8,7 +8,7 @@ interface OptionExample {
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   placeholder?: string;
-  options?: Array<OptionExample>;
+  options?: OptionExample[];
 }
 
 export default function Select({ label, placeholder, options, ...rest }: SelectProps) {

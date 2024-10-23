@@ -9,9 +9,9 @@ import PopularCarList from "./ui/panels/CarList/PopularCarList";
 import RecommendedCarList from "./ui/panels/CarList/RecommendedCarList";
 import DateTimeLocationPicker from "./ui/panels/dateTimeLocationPicker";
 
-export default async function Home() {
+export default function Home() {
   return (
-    <>
+    <div className="bg-[#F6F7F9] py-8 pb-16 px-16">
       <div className="grid grid-cols-2 gap-8 mb-8">
         <Ad
           title="The Best Platform for Car Rental"
@@ -41,6 +41,6 @@ export default async function Home() {
         <PopularCarList />
         <RecommendedCarList />
       </div>
-    </>
+    </div>
   );
 }

@@ -3,13 +3,13 @@ import { InfiniteData } from "@tanstack/react-query";
 import { Fragment } from "react";
 import ListItem from "./listItem";
 
-interface CarListProps {
+interface CarListProps extends React.HTMLAttributes<HTMLDivElement> {
   data: InfiniteData<CarListResponse> | undefined;
 }
 
 export default function CarList({ data, ...rest }: CarListProps) {
   return (
-    <div {...rest} className="grid grid-cols-4 gap-8">
+    <div {...rest}>
       {data?.pages.map((group, i) => (
         <Fragment key={i}>
           {group?.data.map((car) => (

@@ -1,0 +1,50 @@
+import clsx from "clsx";
+import CheckIcon from "../icons/check";
+
+interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+  children?: React.ReactNode;
+}
+
+export default function Checkbox({ id, disabled, label, children, ...rest }: CheckboxProps) {
+  return (
+    <div className="flex gap-2">
+      <div className="grid place-items-center">
+        <input
+          {...rest}
+          type="checkbox"
+          id={id}
+          disabled={disabled}
+          className="
+            peer
+            col-start-1 row-start-1
+            appearance-none
+            border
+            border-secondary-300
+            checked:border-transparent
+            w-6 h-6  checked:bg-primary-500 rounded
+            disabled:border-gray-400
+          "
+        />
+        <CheckIcon
+          className={clsx(
+            "pointer-events-none",
+            "col-start-1 row-start-1",
+            "fill-transparent peer-checked:fill-white",
+            "peer-checked:peer-disabled:fill-gray-400"
+          )}
+        />
+      </div>
+      {children || (
+        <label
+          htmlFor={id}
+          className={clsx("text-start text-base font-semibold hover:cursor-pointer", {
+            "text-gray-400": disabled,
+          })}
+        >
+          {label}
+        </label>
+      )}
+    </div>
+  );
+}

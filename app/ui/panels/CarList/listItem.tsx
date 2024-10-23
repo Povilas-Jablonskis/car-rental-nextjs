@@ -1,6 +1,6 @@
 "use client";
 
-import { Car } from "@/app/lib/definitions";
+import { Cars } from "@prisma/client";
 import clsx from "clsx";
 import Image from "next/image";
 import { useState } from "react";
@@ -11,14 +11,19 @@ import SeatsIcon from "../../icons/seats";
 import TankSizeIcon from "../../icons/tankSize";
 
 interface ListItemProps extends React.HTMLAttributes<HTMLDivElement> {
-  car: Car;
+  car: Cars;
 }
+
+const USDollar = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+});
 
 export default function ListItem({ car, ...rest }: ListItemProps) {
   const [favourite, setFavourite] = useState(false);
 
   return (
-    <div {...rest} className="rounded-xl bg-white p-6">
+    <div {...rest} className="flex flex-col rounded-xl bg-white p-6 min-h-96">
       <div className="flex place-content-between">
         <span className="text-secondary-500 font-bold text-xl">{car.name}</span>
         <button onClick={() => setFavourite((x) => !x)}>
@@ -35,7 +40,7 @@ export default function ListItem({ car, ...rest }: ListItemProps) {
         width={0}
         height={0}
         style={{ width: "auto" }}
-        className="mx-auto my-16"
+        className="m-auto"
         priority
         src={car.image}
         alt="Car"
@@ -43,7 +48,7 @@ export default function ListItem({ car, ...rest }: ListItemProps) {
       <div className="flex place-content-between mb-6">
         <div className="flex gap-1.5 items-center">
           <TankSizeIcon />
-          <span className="text-secondary-300 font-medium">{car.fueltank}L</span>
+          <span className="text-secondary-300 font-medium">{car.fuelTank}L</span>
         </div>
         <div className="flex gap-1.5 items-center">
           <GearTypeIcon />
@@ -57,11 +62,14 @@ export default function ListItem({ car, ...rest }: ListItemProps) {
         </div>
       </div>
       <div className="flex place-content-between">
-        <div className="grid">
+        <div className="grid place-content-center">
           <span className="text-xl text-secondary-500 font-bold">
-            {car.price}/<span className="text-sm text-secondary-300 font-bold">day</span>
+            {USDollar.format(+car.price)}/
+            <span className="text-sm text-secondary-300 font-bold">day</span>
           </span>
-          {car.oldprice != null && <s className="text-secondary-300 font-bold">{car.oldprice}</s>}
+          {car.oldPrice != null && (
+            <s className="text-secondary-300 font-bold">{USDollar.format(+car.oldPrice)}</s>
+          )}
         </div>
         <PrimaryButton size="lg">Rent Now</PrimaryButton>
       </div>
