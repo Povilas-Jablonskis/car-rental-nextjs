@@ -24,8 +24,6 @@ export async function GET(request: NextRequest) {
     const popularRaw = searchParams.get("popular");
     const popular = popularRaw ? Number(popularRaw) : undefined;
 
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-
     const count = await prisma.cars.count({
       where: { popular: { equals: popular != null ? !!popular : undefined } },
     });

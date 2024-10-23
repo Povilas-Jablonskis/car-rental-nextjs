@@ -7,8 +7,6 @@ export async function GET() {
   try {
     const prisma = new PrismaClient();
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
     let values = Object.values(CarSeat).map((x) => Number(x));
     values = values.splice(values.length / 2, values.length / 2);
 

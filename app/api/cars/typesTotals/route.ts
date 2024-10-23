@@ -7,8 +7,6 @@ export async function GET() {
   try {
     const prisma = new PrismaClient();
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
     const values = Object.values(CarType);
 
     const response: Record<string, number> = {};
