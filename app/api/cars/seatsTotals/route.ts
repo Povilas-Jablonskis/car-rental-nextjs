@@ -10,17 +10,19 @@ export async function GET() {
     let values = Object.values(CarSeat).map((x) => Number(x));
     values = values.splice(values.length / 2, values.length / 2);
 
-    const response: Record<number, number> = {};
+    const response = (
+      await Promise.all(
+        values.map(async (value) => {
+          const count = await prisma.cars.count({
+            where: {
+              seats: { equals: value },
+            },
+          });
 
-    for (let i = 0; i < values.length; i++) {
-      const count = await prisma.cars.count({
-        where: {
-          seats: { equals: values[i] },
-        },
-      });
-
-      response[values[i]] = count;
-    }
+          return { [value]: count };
+        }),
+      )
+    ).reduce((acc, curr) => ({ ...acc, ...curr }), {});
 
     return NextResponse.json(response);
   } catch (error) {

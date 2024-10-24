@@ -9,19 +9,19 @@ export async function GET() {
 
     const values = Object.values(CarType);
 
-    const response: Record<string, number> = {};
+    const response = (
+      await Promise.all(
+        values.map(async (value) => {
+          const count = await prisma.cars.count({
+            where: {
+              type: { equals: value },
+            },
+          });
 
-    for (let i = 0; i < values.length; i++) {
-      const value = values[i];
-
-      const count = await prisma.cars.count({
-        where: {
-          type: { equals: value },
-        },
-      });
-
-      response[value] = count;
-    }
+          return { [value]: count };
+        }),
+      )
+    ).reduce((acc, curr) => ({ ...acc, ...curr }), {});
 
     return NextResponse.json(response);
   } catch (error) {
