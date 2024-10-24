@@ -29,7 +29,7 @@ export async function GET() {
     }
 
     return NextResponse.json({
-      apiMessage: { errorMsg: "Failed to fetch car types." },
+      apiMessage: { errorMsg: "Failed to fetch car seats." },
     });
   }
 }
