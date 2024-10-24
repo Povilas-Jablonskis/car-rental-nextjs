@@ -36,14 +36,28 @@ async function seedCars() {
     ),
   );
 
+  return prisma.cars.create({
+    data: {
+      name: cars[0].name,
+      image: cars[0].image,
+      type: cars[0].type.toString(),
+      gear: cars[0].gear,
+      fuelTank: cars[0].fuelTank,
+      seats: cars[0].seats,
+      popular: cars[0].popular,
+      price: cars[0].price,
+      oldPrice: cars[0].oldPrice,
+    },
+  });
+
   return insertedCars;
 }
 
 export async function GET() {
   try {
-    await seedCars();
+    const insertedCars = await seedCars();
 
-    return Response.json({ message: "Database seeded successfully" });
+    return Response.json({ message: insertedCars });
   } catch (error) {
     return Response.json({ error }, { status: 500 });
   }
