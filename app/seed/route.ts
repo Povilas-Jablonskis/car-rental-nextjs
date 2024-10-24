@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { NextRequest } from "next/server";
 import { cars } from "../lib/placeholder-data";
 
 async function seedCars() {
@@ -53,8 +54,11 @@ async function seedCars() {
   return insertedCars;
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const searchParams = request.nextUrl.searchParams;
+
     const insertedCars = await seedCars();
 
     return Response.json({ message: insertedCars });
