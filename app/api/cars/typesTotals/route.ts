@@ -1,14 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import { isDynamicServerError } from "next/dist/client/components/hooks-server-context";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { CarType } from "./types";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const prisma = new PrismaClient();
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const searchParams = request.nextUrl.searchParams;
 
     const values = Object.values(CarType);
 

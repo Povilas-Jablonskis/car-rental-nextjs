@@ -1,6 +1,6 @@
-import { Cars, Prisma } from "@prisma/client";
+import { Cars, Prisma, PrismaClient } from "@prisma/client";
 
-export const cars: Omit<Cars, "id">[] = [
+const cars: Omit<Cars, "id">[] = [
   {
     name: "Koenigsegg",
     image:
@@ -146,3 +146,25 @@ export const cars: Omit<Cars, "id">[] = [
     oldPrice: null,
   },
 ];
+
+const prisma = new PrismaClient();
+
+async function main() {
+  await prisma.cars.deleteMany();
+
+  await Promise.all(
+    cars.map(async (data) => {
+      return prisma.cars.create({ data });
+    }),
+  );
+}
+
+main()
+  .then(async () => {
+    await prisma.$disconnect();
+  })
+  .catch(async (e) => {
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });
