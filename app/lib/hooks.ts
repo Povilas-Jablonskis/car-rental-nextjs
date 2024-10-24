@@ -62,7 +62,7 @@ export function useGetCategoryCarList(
 
 export function useCarTypesTotals(initialData: Record<number, number>) {
   return useQuery<Record<string, number>>({
-    queryKey: ["fetchCarTypesTotals"],
+    queryKey: ["fetchCarTypesTotals", initialData],
     queryFn: async () => {
       const response = await fetch(`/api/cars/typesTotals`);
       const result = await response.json();
@@ -75,7 +75,7 @@ export function useCarTypesTotals(initialData: Record<number, number>) {
 
 export function useCarSeatsTotals(initialData: Record<number, number>) {
   return useQuery<Record<number, number>>({
-    queryKey: ["fetchCarSeatsTotals"],
+    queryKey: ["fetchCarSeatsTotals", initialData],
     queryFn: async () => {
       const response = await fetch(`/api/cars/seatsTotals`);
       const result = await response.json();
