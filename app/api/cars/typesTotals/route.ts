@@ -11,8 +11,6 @@ export async function GET() {
 
     const response: Record<string, number> = {};
 
-    console.log("types enum", values);
-
     for (let i = 0; i < values.length; i++) {
       const value = values[i];
 
@@ -23,8 +21,6 @@ export async function GET() {
       });
 
       response[value] = count;
-
-      console.log("types", response);
     }
 
     return NextResponse.json(response);

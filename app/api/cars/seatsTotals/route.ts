@@ -12,8 +12,6 @@ export async function GET() {
 
     const response: Record<number, number> = {};
 
-    console.log("seats enum", values);
-
     for (let i = 0; i < values.length; i++) {
       const count = await prisma.cars.count({
         where: {
@@ -22,8 +20,6 @@ export async function GET() {
       });
 
       response[values[i]] = count;
-
-      console.log("seats", response);
     }
 
     return NextResponse.json(response);
