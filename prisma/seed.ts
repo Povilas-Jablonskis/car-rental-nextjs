@@ -152,11 +152,9 @@ const prisma = new PrismaClient();
 async function main() {
   await prisma.cars.deleteMany();
 
-  await Promise.all(
-    cars.map(async (data) => {
-      return prisma.cars.create({ data });
-    }),
-  );
+  for (let i = 0; i < cars.length; i++) {
+    await prisma.cars.create({ data: cars[i] });
+  }
 }
 
 main()
