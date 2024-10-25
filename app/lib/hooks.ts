@@ -8,48 +8,19 @@ export interface CarListResponse {
   pageNumber: number | null;
 }
 
-export function useGetPopularCarList(pageSize: number) {
-  return useInfiniteQuery<CarListResponse>({
-    queryKey: ["fetchPopularCars", pageSize],
-    queryFn: async ({ pageParam }) => {
-      const response = await fetch(
-        `/api/cars?pageNumber=${pageParam}&pageSize=${pageSize}&popular=1`,
-      );
-      const result = await response.json();
-      return result;
-    },
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.pageNumber,
-    refetchOnWindowFocus: false,
-  });
-}
-
-export function useGetRecommendedCarList(pageSize: number) {
-  return useInfiniteQuery<CarListResponse>({
-    queryKey: ["fetchRecommendedCars", pageSize],
-    queryFn: async ({ pageParam }) => {
-      const response = await fetch(
-        `/api/cars?pageNumber=${pageParam}&pageSize=${pageSize}&popular=0`,
-      );
-      const result = await response.json();
-      return result;
-    },
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.pageNumber,
-    refetchOnWindowFocus: false,
-  });
-}
-
-export function useGetCategoryCarList(
+export function useGetCarList(
   pageSize: number,
-  searchParams: Record<string, string>,
+  popular?: boolean,
+  searchParams?: Record<string, string>,
 ) {
   return useInfiniteQuery<CarListResponse>({
-    queryKey: ["fetchCategoryCars", pageSize, searchParams],
+    queryKey: ["fetchCars", pageSize, popular, searchParams],
     queryFn: async ({ pageParam }) => {
       const params = new URLSearchParams(searchParams);
+      const paramsStr = params.size ? `&${params.toString()}` : "";
+      const popularStr = popular != null ? `&popular=${Number(popular)}` : "";
       const response = await fetch(
-        `/api/cars?pageNumber=${pageParam}&pageSize=${pageSize}&${params.toString()}`,
+        `/api/cars?pageNumber=${pageParam}&pageSize=${pageSize}${popularStr}${paramsStr}`,
       );
       const result = await response.json();
       return result;

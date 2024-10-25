@@ -1,20 +1,15 @@
-"use client";
-
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import car7 from "../public/images/car7.png";
 import car8 from "../public/images/car8.png";
 import PrimaryButton from "./ui/buttons/primaryButton";
 import RentalCarButton from "./ui/buttons/rentalCarButton";
 import SwapIcon from "./ui/icons/swap";
 import Ad from "./ui/panels/ad";
-import PopularCarList from "./ui/panels/CarList/PopularCarList";
-import RecommendedCarList from "./ui/panels/CarList/RecommendedCarList";
+import CarList from "./ui/panels/CarList";
+import CarListTitle from "./ui/panels/CarList/title";
 import DateTimeLocationPicker from "./ui/panels/dateTimeLocationPicker";
 
 export default function Home() {
-  const { push } = useRouter();
-
   return (
     <div className="bg-[#F6F7F9] px-16 py-8 pb-16">
       <div className="mb-8 grid grid-cols-2 gap-8">
@@ -43,28 +38,17 @@ export default function Home() {
         <DateTimeLocationPicker label="Drop - Off" />
       </div>
       <div className="grid gap-y-8">
-        <div>
-          <div className="mb-8 flex place-content-between">
-            <span className="text-base font-semibold text-secondary-300">
-              Popular Cars
-            </span>
-            <button
-              className="text-end text-base font-semibold text-primary-500"
-              onClick={() => push("/carsCategory")}
-            >
-              View All
-            </button>
-          </div>
-          <PopularCarList />
-        </div>
-        <div>
-          <div className="mb-8 flex place-content-between">
-            <span className="text-base font-semibold text-secondary-300">
-              Recommended Cars
-            </span>
-          </div>
-          <RecommendedCarList />
-        </div>
+        <CarList className="grid-cols-4" pageSize={4} popular={true}>
+          <CarListTitle title="Popular Cars" searchParams={{}} />
+        </CarList>
+        <CarList
+          className="grid-cols-4"
+          pageSize={8}
+          popular={false}
+          showMoreCars
+        >
+          <CarListTitle title="Recommended Cars" />
+        </CarList>
       </div>
     </div>
   );

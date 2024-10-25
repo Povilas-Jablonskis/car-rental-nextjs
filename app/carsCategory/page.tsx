@@ -1,7 +1,7 @@
 import PrimaryButton from "../ui/buttons/primaryButton";
 import SwapIcon from "../ui/icons/swap";
+import CarList from "../ui/panels/CarList";
 import DateTimeLocationPicker from "../ui/panels/dateTimeLocationPicker";
-import CarFilterList from "./ui/carFilterList";
 
 interface PageProps {
   searchParams: Record<string, string>;
@@ -18,7 +18,11 @@ export default function Page({ searchParams }: PageProps) {
         <DateTimeLocationPicker label="Drop - Off" />
       </div>
       <div className="grid gap-y-8">
-        <CarFilterList searchParams={searchParams} />
+        <CarList
+          className="grid-cols-3"
+          pageSize={9}
+          searchParams={searchParams}
+        />
       </div>
     </>
   );
