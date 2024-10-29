@@ -32,6 +32,7 @@ const config: Config = {
       },
       fontSize: {
         "2base": ["2rem", "2.5rem"],
+        "2sm": ["1.75rem", "2.5rem"],
       },
     },
   },

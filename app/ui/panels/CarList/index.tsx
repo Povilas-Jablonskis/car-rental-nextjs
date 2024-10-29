@@ -51,7 +51,9 @@ export default function CarList({
       <div {...rest} className={clsx("grid gap-8", className)}>
         {data?.pages.map((group, i) => (
           <Fragment key={i}>
-            {group?.data.map((car) => <ListItem key={car.id} car={car} />)}
+            {group?.data.map((car) => (
+              <ListItem key={car.id} car={car} searchParams={searchParams} />
+            ))}
           </Fragment>
         ))}
       </div>

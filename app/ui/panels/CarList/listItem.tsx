@@ -3,6 +3,7 @@
 import { Cars } from "@prisma/client";
 import clsx from "clsx";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import PrimaryButton from "../../buttons/primaryButton";
 import GearTypeIcon from "../../icons/gearType";
@@ -12,6 +13,7 @@ import TankSizeIcon from "../../icons/tankSize";
 
 interface ListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   car: Cars;
+  searchParams?: Record<string, string>;
 }
 
 const USDollar = new Intl.NumberFormat("en-US", {
@@ -19,7 +21,13 @@ const USDollar = new Intl.NumberFormat("en-US", {
   currency: "USD",
 });
 
-export default function ListItem({ car, ...rest }: ListItemProps) {
+export default function ListItem({
+  car,
+  searchParams,
+  ...rest
+}: ListItemProps) {
+  const { push } = useRouter();
+
   const [favourite, setFavourite] = useState(car.favourite);
 
   return (
@@ -75,7 +83,16 @@ export default function ListItem({ car, ...rest }: ListItemProps) {
             </s>
           )}
         </div>
-        <PrimaryButton size="lg">Rent Now</PrimaryButton>
+        <PrimaryButton
+          size="lg"
+          onClick={() =>
+            push(
+              `/carsCategory/${car.id}?${new URLSearchParams(searchParams).toString()}`,
+            )
+          }
+        >
+          Rent Now
+        </PrimaryButton>
       </div>
     </div>
   );

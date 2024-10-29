@@ -1,0 +1,54 @@
+import { InfiniteQueryResponse } from "@/app/lib/hooks";
+import { PrismaClient, Reviews } from "@prisma/client";
+import { isDynamicServerError } from "next/dist/client/components/hooks-server-context";
+import { NextRequest, NextResponse } from "next/server";
+
+interface GETProps {
+  params: {
+    id: string;
+  };
+}
+
+export async function GET(request: NextRequest, { params }: GETProps) {
+  try {
+    const prisma = new PrismaClient();
+
+    const searchParams = request.nextUrl.searchParams;
+
+    const currentPageNumber = Number(searchParams.get("pageNumber"));
+    const pageSize = Number(searchParams.get("pageSize"));
+
+    const count = await prisma.reviews.count({
+      where: {
+        carsId: { equals: params.id },
+      },
+    });
+
+    const reviews = await prisma.reviews.findMany({
+      skip: currentPageNumber * pageSize,
+      take: pageSize,
+      where: {
+        carsId: { equals: params.id },
+      },
+    });
+
+    const nextPageNumberCandidate = currentPageNumber + 1;
+    const nextPageNumber =
+      nextPageNumberCandidate * pageSize < Number(count)
+        ? nextPageNumberCandidate
+        : null;
+
+    return NextResponse.json<InfiniteQueryResponse<Reviews>>({
+      data: reviews,
+      pageNumber: nextPageNumber,
+    });
+  } catch (error) {
+    if (isDynamicServerError(error)) {
+      throw error;
+    }
+
+    return NextResponse.json({
+      apiMessage: { errorMsg: "Failed to fetch reviews." },
+    });
+  }
+}

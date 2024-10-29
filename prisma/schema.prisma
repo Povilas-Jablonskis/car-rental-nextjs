@@ -51,6 +51,19 @@ model Cars {
   price       Decimal       @db.Money
   oldPrice    Decimal?      @db.Money
   favourite   Boolean
+  reviews     Reviews[]
+}
+
+model Reviews {
+  id          String   @id @default(uuid())
+  name        String
+  score       Int      @db.SmallInt
+  description String
+  workplace   String
+  image       String
+  date        DateTime
+  Cars        Cars     @relation(fields: [carsId], references: [id])
+  carsId      String
 }
 
 enum CarCategory {
