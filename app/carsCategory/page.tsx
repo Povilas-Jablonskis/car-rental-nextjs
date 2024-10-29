@@ -22,6 +22,7 @@ export default function Page({ searchParams }: PageProps) {
           className="grid-cols-3"
           pageSize={9}
           searchParams={searchParams}
+          categories={[]}
         />
       </div>
     </>

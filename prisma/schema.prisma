@@ -39,14 +39,33 @@ model Revenue {
 }
 
 model Cars {
-  id       String   @id @default(uuid())
-  name     String
-  image    String
-  type     String
-  gear     String
-  fuelTank Int
-  seats    Int
-  popular  Boolean
-  price    Decimal  @db.Money
-  oldPrice Decimal? @db.Money
+  id          String        @id @default(uuid())
+  name        String
+  image       String
+  description String
+  type        CarType
+  gear        CarGear
+  fuelTank    Int           @db.SmallInt
+  seats       Int           @db.SmallInt
+  category    CarCategory[]
+  price       Decimal       @db.Money
+  oldPrice    Decimal?      @db.Money
+  favourite   Boolean
+}
+
+enum CarCategory {
+  Ropular
+  Recommended
+  Recent
+}
+
+enum CarGear {
+  Manual
+}
+
+enum CarType {
+  Sport
+  SUV
+  Sedan
+  Hatchback
 }

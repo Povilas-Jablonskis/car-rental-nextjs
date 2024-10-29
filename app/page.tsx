@@ -1,3 +1,4 @@
+import { CarCategory } from "@prisma/client";
 import Image from "next/image";
 import car7 from "../public/images/car7.png";
 import car8 from "../public/images/car8.png";
@@ -38,13 +39,17 @@ export default function Home() {
         <DateTimeLocationPicker label="Drop - Off" />
       </div>
       <div className="grid gap-y-8">
-        <CarList className="grid-cols-4" pageSize={4} popular={true}>
+        <CarList
+          className="grid-cols-4"
+          pageSize={4}
+          categories={[CarCategory.Ropular]}
+        >
           <CarListTitle title="Popular Cars" searchParams={{}} />
         </CarList>
         <CarList
           className="grid-cols-4"
           pageSize={8}
-          popular={false}
+          categories={[CarCategory.Recommended]}
           showMoreCars
         >
           <CarListTitle title="Recommended Cars" />

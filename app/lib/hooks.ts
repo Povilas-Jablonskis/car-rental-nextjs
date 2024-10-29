@@ -1,26 +1,26 @@
 "use client";
 
-import { Cars } from "@prisma/client";
+import { CarCategory, Cars } from "@prisma/client";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 
-export interface CarListResponse {
-  data: Cars[];
+export interface InfiniteQueryResponse<T extends object> {
+  data: T[];
   pageNumber: number | null;
 }
 
 export function useGetCarList(
   pageSize: number,
-  popular?: boolean,
+  categories: CarCategory[],
   searchParams?: Record<string, string>,
 ) {
-  return useInfiniteQuery<CarListResponse>({
-    queryKey: ["fetchCars", pageSize, popular, searchParams],
+  return useInfiniteQuery<InfiniteQueryResponse<Cars>>({
+    queryKey: ["fetchCars", pageSize, categories, searchParams],
     queryFn: async ({ pageParam }) => {
       const params = new URLSearchParams(searchParams);
       const paramsStr = params.size ? `&${params.toString()}` : "";
-      const popularStr = popular != null ? `&popular=${Number(popular)}` : "";
+      const categoriesStr = `&categories=${categories.join(",")}`;
       const response = await fetch(
-        `/api/cars?pageNumber=${pageParam}&pageSize=${pageSize}${popularStr}${paramsStr}`,
+        `/api/cars?pageNumber=${pageParam}&pageSize=${pageSize}${categoriesStr}${paramsStr}`,
       );
       const result = await response.json();
       return result;

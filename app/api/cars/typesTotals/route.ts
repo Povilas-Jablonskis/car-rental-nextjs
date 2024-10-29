@@ -1,7 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import { CarType, PrismaClient } from "@prisma/client";
 import { isDynamicServerError } from "next/dist/client/components/hooks-server-context";
 import { NextResponse } from "next/server";
-import { CarType } from "./types";
 
 export async function GET() {
   try {

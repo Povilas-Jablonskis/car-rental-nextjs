@@ -1,8 +1,8 @@
 "use client";
 
-import { CarType } from "@/app/api/cars/typesTotals/types";
 import { useCarTypesTotals } from "@/app/lib/hooks";
 import Checkbox from "@/app/ui/controls/checkbox";
+import { CarType } from "@prisma/client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
 

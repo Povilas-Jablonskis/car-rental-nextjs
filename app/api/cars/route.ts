@@ -1,5 +1,5 @@
-import { CarListResponse } from "@/app/lib/hooks";
-import { PrismaClient } from "@prisma/client";
+import { InfiniteQueryResponse } from "@/app/lib/hooks";
+import { CarCategory, Cars, CarType, PrismaClient } from "@prisma/client";
 import { isDynamicServerError } from "next/dist/client/components/hooks-server-context";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -13,7 +13,9 @@ export async function GET(request: NextRequest) {
     const pageSize = Number(searchParams.get("pageSize"));
 
     const typesRaw = searchParams.get("types");
-    const types = typesRaw ? typesRaw.split(",") : undefined;
+    const types = typesRaw
+      ? typesRaw.split(",").map((x) => CarType[x as keyof typeof CarType])
+      : undefined;
 
     const seatsRaw = searchParams.get("seats");
     const seats = seatsRaw
@@ -23,11 +25,20 @@ export async function GET(request: NextRequest) {
     const priceRaw = searchParams.get("price");
     const price = priceRaw ? Number(priceRaw) : undefined;
 
-    const popularRaw = searchParams.get("popular");
-    const popular = popularRaw ? Number(popularRaw) : undefined;
+    const categoriesRaw = searchParams.get("categories");
+    const categories = categoriesRaw
+      ? categoriesRaw
+          .split(",")
+          .map((x) => CarCategory[x as keyof typeof CarCategory])
+      : undefined;
 
     const count = await prisma.cars.count({
-      where: { popular: { equals: popular != null ? !!popular : undefined } },
+      where: {
+        price: { lte: price },
+        type: { in: types },
+        seats: { in: seats },
+        category: { hasEvery: categories || [] },
+      },
     });
 
     const cars = await prisma.cars.findMany({
@@ -37,7 +48,7 @@ export async function GET(request: NextRequest) {
         price: { lte: price },
         type: { in: types },
         seats: { in: seats },
-        popular: { equals: popular != null ? !!popular : undefined },
+        category: { hasEvery: categories || [] },
       },
     });
 
@@ -47,7 +58,7 @@ export async function GET(request: NextRequest) {
         ? nextPageNumberCandidate
         : null;
 
-    return NextResponse.json<CarListResponse>({
+    return NextResponse.json<InfiniteQueryResponse<Cars>>({
       data: cars,
       pageNumber: nextPageNumber,
     });

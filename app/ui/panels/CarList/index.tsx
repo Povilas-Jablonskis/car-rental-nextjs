@@ -1,6 +1,7 @@
 "use client";
 
 import { useGetCarList } from "@/app/lib/hooks";
+import { CarCategory } from "@prisma/client";
 import clsx from "clsx";
 import { Fragment } from "react";
 import PrimaryButton from "../../buttons/primaryButton";
@@ -9,14 +10,14 @@ import CarListSkeleton from "./skeleton";
 
 interface CarListProps extends React.HTMLAttributes<HTMLDivElement> {
   pageSize: number;
-  popular?: boolean;
+  categories: CarCategory[];
   searchParams?: Record<string, string>;
   showMoreCars?: boolean;
 }
 
 export default function CarList({
   pageSize,
-  popular,
+  categories,
   searchParams,
   showMoreCars,
   className,
@@ -25,7 +26,7 @@ export default function CarList({
 }: CarListProps) {
   const { data, isLoading, hasNextPage, fetchNextPage } = useGetCarList(
     pageSize,
-    popular,
+    categories,
     searchParams,
   );
 
