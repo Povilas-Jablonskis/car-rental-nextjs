@@ -1,12 +1,12 @@
 export default function GalleryIcon(props: React.SVGAttributes<SVGElement>) {
   return (
     <svg
-      {...props}
       width="60"
       height="68"
       viewBox="0 0 60 60"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         d="M6.45 47.5252L6.4 47.5752C5.725 46.1002 5.3 44.4252 5.125 42.5752C5.3 44.4002 5.775 46.0502 6.45 47.5252Z"
