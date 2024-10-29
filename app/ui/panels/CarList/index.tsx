@@ -30,19 +30,20 @@ export default function CarList({
     searchParams,
   );
 
-  let totalCars = data?.pages.flatMap((x) => x.data).length;
-  totalCars = totalCars != null ? totalCars : pageSize;
-
   if (isLoading)
     return (
       <div>
         {children}
         <CarListSkeleton
           className={clsx("grid gap-8", className)}
-          totalCars={totalCars}
+          totalCars={pageSize}
         />
       </div>
     );
+
+  const totalCars = data?.pages.flatMap((x) => x.data).length;
+
+  if (!totalCars) return <></>;
 
   return (
     <div>
