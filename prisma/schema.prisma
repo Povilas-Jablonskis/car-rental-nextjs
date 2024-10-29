@@ -5,48 +5,48 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 model Users {
-  id String @id @default(uuid())
-  name String
-  email Int
+  id       String @id @default(uuid())
+  name     String
+  email    Int
   password Int
 }
 
 model Invoices {
-  id String @id @default(uuid())
-  customer_id  String
-  amount Int
-  status String
-  date DateTime
+  id          String   @id @default(uuid())
+  customer_id String
+  amount      Int
+  status      String
+  date        DateTime
 }
 
 model Customers {
-  id String @id @default(uuid())
-  name  String
-  email String
+  id        String @id @default(uuid())
+  name      String
+  email     String
   image_url String
 }
 
 model Revenue {
-  id String @id @default(uuid())
-  month  String
+  id      String @id @default(uuid())
+  month   String
   revenue Int
 }
 
 model Cars {
-  id String @id @default(uuid())
-  name String
-  image String
-  type String
-  gear String
+  id       String   @id @default(uuid())
+  name     String
+  image    String
+  type     String
+  gear     String
   fuelTank Int
-  seats Int
-  popular Boolean
-  price Decimal @db.Money
+  seats    Int
+  popular  Boolean
+  price    Decimal  @db.Money
   oldPrice Decimal? @db.Money
 }
