@@ -20,7 +20,7 @@ const USDollar = new Intl.NumberFormat("en-US", {
 });
 
 export default function ListItem({ car, ...rest }: ListItemProps) {
-  const [favourite, setFavourite] = useState(false);
+  const [favourite, setFavourite] = useState(car.favourite);
 
   return (
     <div {...rest} className="flex min-h-96 flex-col rounded-xl bg-white p-6">
