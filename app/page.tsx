@@ -13,7 +13,7 @@ import DateTimeLocationPicker from "./ui/panels/dateTimeLocationPicker";
 export default function Home() {
   return (
     <div className="bg-[#F6F7F9] px-16 py-8 pb-16">
-      <div className="mb-8 grid grid-cols-2 gap-8">
+      <div className="mb-8 grid grid-cols-2 gap-x-8">
         <Ad
           title="The Best Platform for Car Rental"
           subTitle="Ease of doing a car rental safely and reliably. Of course at a low price."
@@ -31,7 +31,7 @@ export default function Home() {
           <Image className="mx-auto" priority src={car8} alt="Car" />
         </Ad>
       </div>
-      <div className="mb-9 grid auto-cols-[1fr_max-content_1fr] grid-flow-col gap-11">
+      <div className="mb-9 grid auto-cols-[1fr_max-content_1fr] grid-flow-col gap-x-11">
         <DateTimeLocationPicker label="Pick - Up" />
         <PrimaryButton className="self-center !p-[17px] shadow-[0_0_50px_11px_rgba(16,50,147,0.28)]">
           <SwapIcon />

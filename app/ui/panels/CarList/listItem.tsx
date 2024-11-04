@@ -54,17 +54,17 @@ export default function ListItem({
         alt="Car"
       />
       <div className="mb-6 flex place-content-between">
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-x-1.5">
           <TankSizeIcon />
           <span className="font-medium text-secondary-300">
             {car.fuelTank}L
           </span>
         </div>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-x-1.5">
           <GearTypeIcon />
           <span className="font-medium text-secondary-300">{car.gear}</span>
         </div>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-x-1.5">
           <SeatsIcon />
           <span className="font-medium text-secondary-300">
             {car.seats} {car.seats > 1 ? "Persons" : "Person"}

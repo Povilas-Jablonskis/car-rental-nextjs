@@ -19,7 +19,7 @@ export default function Select({
 }: SelectProps) {
   return (
     <div className="grid gap-y-2">
-      <label className="text-base font-bold">{label}</label>
+      {label && <label className="text-base font-bold">{label}</label>}
       <div className="flex items-center gap-x-2">
         <select
           {...rest}

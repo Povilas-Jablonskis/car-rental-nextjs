@@ -48,7 +48,7 @@ export default function SelectPrice() {
   return (
     <div className="grid gap-y-7">
       <p className="text-xs font-semibold text-secondary-300">P R I C E</p>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-y-3">
         <Input
           type="number"
           ref={inputRef}

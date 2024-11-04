@@ -11,10 +11,11 @@ export default function Checkbox({
   disabled,
   label,
   children,
+  className,
   ...rest
 }: CheckboxProps) {
   return (
-    <div className="flex gap-2">
+    <div className={clsx("flex gap-x-2", className)}>
       <div className="grid place-items-center">
         <input
           {...rest}
@@ -32,7 +33,8 @@ export default function Checkbox({
           )}
         />
       </div>
-      {children || (
+      {children != null && children}
+      {children == null && label && (
         <label
           htmlFor={id}
           className={clsx(

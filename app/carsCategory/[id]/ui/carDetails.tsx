@@ -19,7 +19,7 @@ export default function CarDetails({ searchParams, params }: CarDetailsProps) {
 
   if (!data)
     return (
-      <div className="flex flex-col items-center justify-center gap-2">
+      <div className="flex flex-col items-center justify-center gap-y-2">
         <h2 className="text-xl font-semibold">404 Not Found</h2>
         <p>Could not find the requested car.</p>
       </div>

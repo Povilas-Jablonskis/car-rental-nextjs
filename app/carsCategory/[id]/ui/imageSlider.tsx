@@ -30,7 +30,7 @@ export default function ImageSlider({ car }: ImageSliderProps) {
           style={{ width: "100%" }}
           className="h-[360px] rounded-xl"
           src={images[selected]}
-          alt="Profile picture"
+          alt="Big picture"
         />
       </div>
       <div className="grid grid-cols-3 gap-x-6">
@@ -49,7 +49,7 @@ export default function ImageSlider({ car }: ImageSliderProps) {
               height={0}
               className="rounded-xl"
               style={{ height: selected == idx ? 108 : 124, width: "100%" }}
-              alt="Profile picture"
+              alt="Small picture"
             />
           </div>
         ))}

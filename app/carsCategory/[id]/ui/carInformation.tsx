@@ -53,7 +53,7 @@ export default function CarInformation({
         </button>
       </div>
       <div className="flex gap-x-2">
-        <div className="flex">
+        <div className="flex gap-x-0.5">
           {[...Array(5)].map((_, idx) =>
             idx < score ? (
               <PositiveReviewIcon key={idx} />
@@ -63,7 +63,7 @@ export default function CarInformation({
           )}
         </div>
         <span className="font-medium text-secondary-400">
-          {car.reviews.length} Reviews
+          {car.reviews.length} Reviewers
         </span>
       </div>
       <div className="mt-8 text-xl leading-10 tracking-tight text-secondary-400">

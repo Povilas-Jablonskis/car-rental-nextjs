@@ -1,6 +1,4 @@
-import Picker from "../controls/picker";
-import Radio from "../controls/radio";
-import Select from "../controls/select";
+import BasicInput from "../controls/basicInput";
 
 interface DateTimeLocationPickerProps
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -13,11 +11,15 @@ export default function DateTimeLocationPicker({
 }: DateTimeLocationPickerProps) {
   return (
     <div {...rest} className="grid gap-y-4 rounded-lg bg-white px-12 py-6">
-      <Radio id={label} label={label} />
-      <div className="flex place-content-between divide-x [&>*:not(:first-child)]:ps-6">
-        <Select label="Locations" placeholder="Select your city" />
-        <Picker type="date" label="Date" />
-        <Picker type="time" label="Time" />
+      {label && (
+        <label className="text-base font-semibold text-secondary-500">
+          {label}
+        </label>
+      )}
+      <div className="grid grid-flow-col divide-x divide-navbar/40 [&>*]:px-6 [&>:first-child]:ps-0 [&>:last-child]:pe-0">
+        <BasicInput label="Locations" placeholder="Enter your city" />
+        <BasicInput type="date" label="Date" placeholder="Select your date" />
+        <BasicInput type="time" label="Time" />
       </div>
     </div>
   );

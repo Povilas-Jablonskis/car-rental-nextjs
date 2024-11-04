@@ -17,7 +17,7 @@ export default function Page({ searchParams, params }: PageProps) {
       <CarDetails searchParams={searchParams} params={params} />
       <Reviews params={params} />
       <CarList
-        className="grid grid-cols-3 gap-8"
+        className="grid-cols-3"
         pageSize={3}
         categories={[CarCategory.Recent]}
       >
@@ -27,7 +27,6 @@ export default function Page({ searchParams, params }: PageProps) {
         className="grid-cols-3"
         pageSize={3}
         categories={[CarCategory.Recommended]}
-        showMoreCars
       >
         <CarListTitle title="Recommended Cars" />
       </CarList>

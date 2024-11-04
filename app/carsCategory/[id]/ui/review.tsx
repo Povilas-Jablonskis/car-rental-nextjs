@@ -23,12 +23,12 @@ export default function Review({ review }: ReviewProps) {
           <span className="text-xl font-bold text-secondary-500">
             {review.name}
           </span>
-          <span className="text-end text-sm font-medium text-secondary-300">
+          <span className="text-end font-medium text-secondary-300">
             {new Date(review.date).toDateString()}
           </span>
         </div>
         <div className="mb-3 flex place-content-between">
-          <span className="text-sm font-medium text-secondary-300">
+          <span className="font-medium text-secondary-300">
             {review.workplace}
           </span>
           <div className="flex gap-x-0.5">
@@ -41,7 +41,7 @@ export default function Review({ review }: ReviewProps) {
             )}
           </div>
         </div>
-        <p className="text-sm text-secondary-400">{review.description}</p>
+        <p className="text-secondary-400">{review.description}</p>
       </div>
     </div>
   );
