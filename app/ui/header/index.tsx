@@ -12,7 +12,7 @@ export default function Header() {
   return (
     <header className="min-h-[123px] border border-navbar/40 px-16 py-10">
       <div className="flex place-content-between">
-        <div className="flex items-center gap-x-16">
+        <div className="flex basis-[53%] items-center gap-x-16">
           <span className="text-2base font-bold text-primary-500">
             <Link href="/">MORENT</Link>
           </span>

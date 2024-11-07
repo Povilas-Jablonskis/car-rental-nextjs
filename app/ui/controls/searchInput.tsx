@@ -8,7 +8,7 @@ export default function SearchInput({
   ...rest
 }: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
-    <div className="flex min-w-[492px] rounded-full border border-navbar/40 px-5 py-2.5 text-secondary-400">
+    <div className="flex flex-1 rounded-full border border-navbar/40 px-5 py-2.5 text-secondary-400">
       <SearchIcon className="me-5" />
       <input
         {...rest}

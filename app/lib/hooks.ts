@@ -1,7 +1,8 @@
 "use client";
 
-import { CarCategory, Cars, Prisma, Reviews } from "@prisma/client";
+import { CarCategory, Cars, CarType, Prisma, Reviews } from "@prisma/client";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { CarSeat } from "../api/cars/seatsTotals/types";
 
 export interface InfiniteQueryResponse<T extends object> {
   data: T[];
@@ -77,7 +78,13 @@ export function useGetReviewsTotals(carId: string) {
   });
 }
 
-export function useCarTypesTotals(initialData: Record<number, number>) {
+export function useCarTypesTotals() {
+  const values = Object.values(CarType);
+
+  const initialData = values.reduce((acc, curr) => {
+    return { ...acc, [curr]: 0 };
+  }, {});
+
   return useQuery<Record<string, number>>({
     queryKey: ["fetchCarTypesTotals", initialData],
     queryFn: async () => {
@@ -90,7 +97,14 @@ export function useCarTypesTotals(initialData: Record<number, number>) {
   });
 }
 
-export function useCarSeatsTotals(initialData: Record<number, number>) {
+export function useCarSeatsTotals() {
+  let values = Object.values(CarSeat).map((x) => Number(x));
+  values = values.splice(values.length / 2, values.length / 2);
+
+  const initialData = values.reduce((acc, curr) => {
+    return { ...acc, [curr]: 0 };
+  }, {});
+
   return useQuery<Record<number, number>>({
     queryKey: ["fetchCarSeatsTotals", initialData],
     queryFn: async () => {

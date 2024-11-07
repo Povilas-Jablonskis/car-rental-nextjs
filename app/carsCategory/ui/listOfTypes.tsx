@@ -2,7 +2,6 @@
 
 import { useCarTypesTotals } from "@/app/lib/hooks";
 import Checkbox from "@/app/ui/controls/checkbox";
-import { CarType } from "@prisma/client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
 
@@ -11,13 +10,7 @@ export default function ListOfTypes() {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const values = Object.values(CarType);
-
-  const initialData = values.reduce((acc, curr) => {
-    return { ...acc, [curr]: 0 };
-  }, {});
-
-  const { data } = useCarTypesTotals(initialData);
+  const { data } = useCarTypesTotals();
 
   const typesRaw = searchParams.get("types");
   let types = typesRaw ? typesRaw.split(",") : [];

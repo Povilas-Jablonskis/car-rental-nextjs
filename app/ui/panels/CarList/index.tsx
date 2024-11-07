@@ -24,11 +24,8 @@ export default function CarList({
   children,
   ...rest
 }: CarListProps) {
-  const { data, isLoading, hasNextPage, fetchNextPage } = useGetCarList(
-    pageSize,
-    categories,
-    searchParams,
-  );
+  const { data, isLoading, isFetchingNextPage, hasNextPage, fetchNextPage } =
+    useGetCarList(pageSize, categories, searchParams);
 
   if (isLoading)
     return (
@@ -62,7 +59,7 @@ export default function CarList({
           <PrimaryButton
             size="lg"
             className="mx-auto"
-            disabled={isLoading}
+            disabled={isFetchingNextPage}
             onClick={() => fetchNextPage()}
           >
             Show more cars

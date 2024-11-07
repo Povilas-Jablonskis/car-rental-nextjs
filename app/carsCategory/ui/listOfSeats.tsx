@@ -11,14 +11,7 @@ export default function ListOfSeats() {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  let values = Object.values(CarSeat).map((x) => Number(x));
-  values = values.splice(values.length / 2, values.length / 2);
-
-  const initialData = values.reduce((acc, curr) => {
-    return { ...acc, [curr]: 0 };
-  }, {});
-
-  const { data } = useCarSeatsTotals(initialData);
+  const { data } = useCarSeatsTotals();
 
   const seatsRaw = searchParams.get("seats");
   let seats = seatsRaw ? seatsRaw.split(",") : [];

@@ -21,6 +21,7 @@ export default function Reviews({ params }: ReviewsProps) {
   const {
     data: reviews,
     isLoading: reviewsIsLoading,
+    isFetchingNextPage: isFetchingNextReviewsPage,
     fetchNextPage: fetchNextReviewsPage,
     hasNextPage: hasNextReviewsPage,
   } = useGetReviews(pageSize, params.id);
@@ -51,7 +52,7 @@ export default function Reviews({ params }: ReviewsProps) {
         <PrimaryButton
           size="lg"
           className="mx-auto mt-6"
-          disabled={reviewsIsLoading || totalReviewsIsLoading}
+          disabled={isFetchingNextReviewsPage}
           onClick={() => fetchNextReviewsPage()}
         >
           Show more reviews
