@@ -35,9 +35,9 @@ export default function ImageSlider({ car }: ImageSliderProps) {
       </div>
       <div className="grid grid-cols-3 gap-x-6">
         {images.map((x, idx) => (
-          <div
-            key={idx}
-            className={clsx("cursor-pointer rounded-xl", {
+          <button
+            key={typeof x === "string" ? x : x.src}
+            className={clsx("rounded-xl", {
               "border-2 border-primary-500 p-2": selected == idx,
             })}
             onClick={() => setSelected(idx)}
@@ -51,7 +51,7 @@ export default function ImageSlider({ car }: ImageSliderProps) {
               style={{ height: selected == idx ? 108 : 124, width: "100%" }}
               alt="Small picture"
             />
-          </div>
+          </button>
         ))}
       </div>
     </div>

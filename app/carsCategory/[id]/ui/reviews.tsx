@@ -40,8 +40,8 @@ export default function Reviews({ params }: ReviewsProps) {
         </div>
       </div>
       <div className="grid gap-y-6">
-        {reviews?.pages.map((group, i) => (
-          <Fragment key={i}>
+        {reviews?.pages.map((group) => (
+          <Fragment key={JSON.stringify(group)}>
             {group?.data.map((review) => (
               <Review key={review.id} review={review} />
             ))}

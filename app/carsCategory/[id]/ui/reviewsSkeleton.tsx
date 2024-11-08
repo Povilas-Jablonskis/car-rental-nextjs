@@ -12,8 +12,8 @@ export default function ReviewsSkeleton({ pageSize }: ReviewsSkeletonProps) {
         <div className="h-4 w-[15px] rounded-full bg-primary-300" />
       </div>
       <div className="grid gap-y-6">
-        {[...Array(pageSize)].map((_, idx) => (
-          <div key={idx} className="flex gap-x-4">
+        {[...Array(pageSize).keys()].map((x) => (
+          <div key={x} className="flex gap-x-4">
             <ProfileIcon />
             <div className="flex flex-1 flex-col">
               <div className="mb-2 flex place-content-between">

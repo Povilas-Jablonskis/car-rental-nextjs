@@ -32,11 +32,11 @@ export default function Review({ review }: ReviewProps) {
             {review.workplace}
           </span>
           <div className="flex gap-x-0.5">
-            {[...Array(5)].map((_, idx) =>
-              idx < review.score ? (
-                <PositiveReviewIcon key={idx} />
+            {[...Array(5).keys()].map((x) =>
+              x < review.score ? (
+                <PositiveReviewIcon key={`${x}Positive`} />
               ) : (
-                <NegativeReviewIcon key={idx} />
+                <NegativeReviewIcon key={`${x}Negative`} />
               ),
             )}
           </div>

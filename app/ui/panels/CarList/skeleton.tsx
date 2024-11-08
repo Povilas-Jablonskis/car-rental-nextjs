@@ -10,8 +10,8 @@ export default function CarListSkeleton({
 }: CarListSkeletonProps) {
   return (
     <div {...rest}>
-      {[...Array(totalCars)].map((_, idx) => (
-        <ListItemSkeleton key={idx} />
+      {[...Array(totalCars).keys()].map((x) => (
+        <ListItemSkeleton key={x} />
       ))}
     </div>
   );
