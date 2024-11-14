@@ -1,52 +1,53 @@
 import clsx from "clsx";
+import { forwardRef } from "react";
+import { FieldError } from "react-hook-form";
 import CheckIcon from "../icons/check";
 
-interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   children?: React.ReactNode;
+  error?: FieldError;
 }
 
-export default function Checkbox({
-  id,
-  disabled,
-  label,
-  children,
-  className,
-  ...rest
-}: CheckboxProps) {
+export default forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
+  { id, disabled, label, children, error, className, ...rest },
+  ref,
+) {
   return (
-    <div className={clsx("flex gap-x-2", className)}>
-      <div className="grid place-items-center">
+    <div
+      className={clsx(
+        "flex gap-x-2 border",
+        className,
+        { "border-transparent": !error },
+        { "border-red-500": !!error },
+      )}
+    >
+      <div className="relative flex place-items-center">
         <input
-          {...rest}
+          ref={ref}
           type="checkbox"
           id={id}
           disabled={disabled}
-          className="peer col-start-1 row-start-1 size-6 appearance-none rounded border border-secondary-300 checked:border-transparent checked:bg-primary-500 disabled:border-gray-400"
+          className="peer me-5 size-6 appearance-none rounded border border-secondary-300 checked:border-transparent checked:bg-primary-500 disabled:border-gray-400"
+          {...rest}
         />
-        <CheckIcon
-          className={clsx(
-            "pointer-events-none",
-            "col-start-1 row-start-1",
-            "fill-transparent peer-checked:fill-white",
-            "peer-checked:peer-disabled:fill-gray-400",
-          )}
-        />
+        <CheckIcon className="pointer-events-none absolute left-0.5 top-0.5 fill-transparent peer-checked:fill-white peer-checked:peer-disabled:fill-gray-400" />
+        {children != null && children}
+        {children == null && label && (
+          <label
+            htmlFor={id}
+            className={clsx(
+              "text-start text-base font-semibold hover:cursor-pointer",
+              {
+                "text-gray-400": disabled,
+              },
+            )}
+          >
+            {label}
+          </label>
+        )}
       </div>
-      {children != null && children}
-      {children == null && label && (
-        <label
-          htmlFor={id}
-          className={clsx(
-            "text-start text-base font-semibold hover:cursor-pointer",
-            {
-              "text-gray-400": disabled,
-            },
-          )}
-        >
-          {label}
-        </label>
-      )}
     </div>
   );
-}
+});

@@ -105,7 +105,7 @@ export default function CarInformation({ car, ...rest }: CarInformationProps) {
         <PrimaryButton
           size="lg"
           className="!px-8 !py-4 !font-bold"
-          onClick={() => push(`/carsCategory/${car.id}`)}
+          onClick={() => push(`/rentCar/${car.id}`)}
         >
           Rent Now
         </PrimaryButton>

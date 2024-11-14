@@ -1,14 +1,20 @@
 import clsx from "clsx";
+import { forwardRef } from "react";
 
-interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface RadioProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
 }
 
-export default function Radio({ id, disabled, label, ...rest }: RadioProps) {
+export default forwardRef<HTMLInputElement, RadioProps>(function Radio(
+  { id, disabled, label, ...rest },
+  ref,
+) {
   return (
     <div className="flex gap-x-2">
       <div className="grid place-items-center">
         <input
+          ref={ref}
           {...rest}
           type="radio"
           id={id}
@@ -39,4 +45,4 @@ export default function Radio({ id, disabled, label, ...rest }: RadioProps) {
       )}
     </div>
   );
-}
+});
