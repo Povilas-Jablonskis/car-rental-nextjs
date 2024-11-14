@@ -19,7 +19,7 @@ export default function DateTimeLocationPicker({
       <div className="grid grid-flow-col divide-x divide-navbar/40 [&>*]:px-6 [&>:first-child]:ps-0 [&>:last-child]:pe-0">
         <BasicInput label="Locations" placeholder="Enter your city" />
         <BasicInput type="date" label="Date" placeholder="Select your date" />
-        <BasicInput type="time" label="Time" />
+        <BasicInput type="time" step={1} label="Time" />
       </div>
     </div>
   );
