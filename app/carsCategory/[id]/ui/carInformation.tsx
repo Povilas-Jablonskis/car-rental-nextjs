@@ -18,11 +18,6 @@ interface CarInformationProps extends React.HTMLAttributes<HTMLDivElement> {
   searchParams?: Record<string, string>;
 }
 
-const USDollar = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
-
 export default function CarInformation({
   car,
   searchParams,
@@ -103,12 +98,12 @@ export default function CarInformation({
       <div className="flex place-content-between">
         <div className="grid place-content-center font-bold">
           <span className="text-2sm text-secondary-500">
-            {USDollar.format(+car.price)}/
+            {formatNumber(car.price)}/
             <span className="text-base text-secondary-300">day</span>
           </span>
           {car.oldPrice != null && (
             <s className="text-base text-secondary-300">
-              {USDollar.format(+car.oldPrice)}
+              {formatNumber(car.oldPrice)}
             </s>
           )}
         </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import formatNumber from "@/app/helpers/formatNumber";
 import { Cars } from "@prisma/client";
 import clsx from "clsx";
 import Image from "next/image";
@@ -15,11 +16,6 @@ interface ListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   car: Cars;
   searchParams?: Record<string, string>;
 }
-
-const USDollar = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
 
 export default function ListItem({
   car,
@@ -74,12 +70,12 @@ export default function ListItem({
       <div className="flex place-content-between">
         <div className="grid place-content-center">
           <span className="text-xl font-bold text-secondary-500">
-            {USDollar.format(+car.price)}/
+            {formatNumber(car.price)}/
             <span className="text-sm font-bold text-secondary-300">day</span>
           </span>
           {car.oldPrice != null && (
             <s className="font-bold text-secondary-300">
-              {USDollar.format(+car.oldPrice)}
+              {formatNumber(car.oldPrice)}
             </s>
           )}
         </div>
