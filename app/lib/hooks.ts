@@ -1,5 +1,3 @@
-"use client";
-
 import { CarCategory, Cars, CarType, Prisma, Reviews } from "@prisma/client";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { CarSeat } from "../api/cars/seatsTotals/types";
@@ -62,18 +60,6 @@ export function useGetReviews(pageSize: number, carId: string) {
     },
     initialPageParam: 0,
     getNextPageParam: (lastPage) => lastPage.pageNumber,
-    refetchOnWindowFocus: false,
-  });
-}
-
-export function useGetReviewsTotals(carId: string) {
-  return useQuery<number>({
-    queryKey: ["fetchReviewsTotals", carId],
-    queryFn: async () => {
-      const response = await fetch(`/api/reviews/${carId}/totals`);
-      const result = await response.json();
-      return result;
-    },
     refetchOnWindowFocus: false,
   });
 }

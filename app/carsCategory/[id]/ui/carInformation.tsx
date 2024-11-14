@@ -1,5 +1,6 @@
 "use client";
 
+import formatNumber from "@/app/helpers/formatNumber";
 import PrimaryButton from "@/app/ui/buttons/primaryButton";
 import HeartIcon from "@/app/ui/icons/heart";
 import NegativeReviewIcon from "@/app/ui/icons/negativeReview";
@@ -15,14 +16,8 @@ interface CarInformationProps extends React.HTMLAttributes<HTMLDivElement> {
       reviews: true;
     };
   }>;
-  searchParams?: Record<string, string>;
 }
-
-export default function CarInformation({
-  car,
-  searchParams,
-  ...rest
-}: CarInformationProps) {
+export default function CarInformation({ car, ...rest }: CarInformationProps) {
   const { push } = useRouter();
 
   const [favourite, setFavourite] = useState(car.favourite);
@@ -110,11 +105,7 @@ export default function CarInformation({
         <PrimaryButton
           size="lg"
           className="!px-8 !py-4 !font-bold"
-          onClick={() =>
-            push(
-              `/carsCategory/${car.id}?${new URLSearchParams(searchParams).toString()}`,
-            )
-          }
+          onClick={() => push(`/carsCategory/${car.id}`)}
         >
           Rent Now
         </PrimaryButton>

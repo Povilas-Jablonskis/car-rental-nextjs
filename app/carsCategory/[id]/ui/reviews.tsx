@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetReviews, useGetReviewsTotals } from "@/app/lib/hooks";
+import { useGetReviews } from "@/app/lib/hooks";
 import PrimaryButton from "@/app/ui/buttons/primaryButton";
 import { Fragment } from "react";
 import Review from "./review";
@@ -10,26 +10,16 @@ interface ReviewsProps extends React.HTMLAttributes<HTMLDivElement> {
   params: {
     id: string;
   };
+  totalReviews: number;
 }
 
-export default function Reviews({ params }: ReviewsProps) {
+export default function Reviews({ params, totalReviews }: ReviewsProps) {
   const pageSize = 2;
 
-  const { data: totalReviews, isLoading: totalReviewsIsLoading } =
-    useGetReviewsTotals(params.id);
+  const { data, isLoading, isFetchingNextPage, fetchNextPage, hasNextPage } =
+    useGetReviews(pageSize, params.id);
 
-  const {
-    data: reviews,
-    isLoading: reviewsIsLoading,
-    isFetchingNextPage: isFetchingNextReviewsPage,
-    fetchNextPage: fetchNextReviewsPage,
-    hasNextPage: hasNextReviewsPage,
-  } = useGetReviews(pageSize, params.id);
-
-  if (reviewsIsLoading || totalReviewsIsLoading)
-    return <ReviewsSkeleton pageSize={pageSize} />;
-
-  if (!totalReviews) return <></>;
+  if (isLoading) return <ReviewsSkeleton pageSize={pageSize} />;
 
   return (
     <div className="grid bg-white p-6">
@@ -40,7 +30,7 @@ export default function Reviews({ params }: ReviewsProps) {
         </div>
       </div>
       <div className="grid gap-y-6">
-        {reviews?.pages.map((group) => (
+        {data?.pages.map((group) => (
           <Fragment key={JSON.stringify(group)}>
             {group?.data.map((review) => (
               <Review key={review.id} review={review} />
@@ -48,12 +38,12 @@ export default function Reviews({ params }: ReviewsProps) {
           </Fragment>
         ))}
       </div>
-      {hasNextReviewsPage && (
+      {hasNextPage && (
         <PrimaryButton
           size="lg"
           className="mx-auto mt-6"
-          disabled={isFetchingNextReviewsPage}
-          onClick={() => fetchNextReviewsPage()}
+          disabled={isFetchingNextPage}
+          onClick={() => fetchNextPage()}
         >
           Show more reviews
         </PrimaryButton>

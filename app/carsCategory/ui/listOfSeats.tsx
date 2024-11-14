@@ -50,13 +50,10 @@ export default function ListOfSeats() {
         >
           <label
             htmlFor={name}
-            className="text-start text-xl font-semibold text-secondary-400 hover:cursor-pointer"
+            className="text-start text-xl font-semibold leading-5 text-secondary-400 hover:cursor-pointer"
           >
             {CarSeat[Number(name)]}{" "}
-            <label
-              htmlFor={name}
-              className="text-start text-xl font-semibold text-secondary-300 hover:cursor-pointer"
-            >
+            <label htmlFor={name} className="text-secondary-300">
               ({value})
             </label>
           </label>

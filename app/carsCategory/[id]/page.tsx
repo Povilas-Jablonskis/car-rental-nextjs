@@ -2,7 +2,6 @@ import CarList from "@/app/ui/panels/CarList";
 import CarListTitle from "@/app/ui/panels/CarList/title";
 import { CarCategory } from "@prisma/client";
 import CarDetails from "./ui/carDetails";
-import Reviews from "./ui/reviews";
 
 interface PageProps {
   searchParams: Record<string, string>;
@@ -14,8 +13,7 @@ interface PageProps {
 export default function Page({ searchParams, params }: PageProps) {
   return (
     <div className="grid gap-y-8">
-      <CarDetails searchParams={searchParams} params={params} />
-      <Reviews params={params} />
+      <CarDetails params={params} />
       <CarList
         className="grid-cols-3"
         pageSize={3}
