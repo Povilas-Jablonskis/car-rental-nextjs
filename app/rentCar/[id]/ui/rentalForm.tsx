@@ -20,7 +20,7 @@ export default function RentalForm() {
   const methods = useForm<FormSchema>({
     mode: "onChange",
     resolver: zodResolver(formSchema),
-    defaultValues: { paymentMethod: PaymentMethod.PayPal },
+    defaultValues: { paymentMethod: PaymentMethod.CC },
   });
   const { control, handleSubmit } = methods;
 
