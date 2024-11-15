@@ -31,7 +31,7 @@ export default function CardNumberInput<T extends object>({
   }
 
   function format(value: string | undefined) {
-    return value?.match(/.{1,4}/g)?.join(" ") || "";
+    return value?.match(/.{1,4}/g)?.join(" ") ?? "";
   }
 
   function onChange(event: ChangeEvent<HTMLInputElement>) {

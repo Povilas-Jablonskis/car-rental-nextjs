@@ -37,7 +37,7 @@ export async function GET(request: NextRequest) {
         price: { lte: price },
         type: { in: types },
         seats: { in: seats },
-        category: { hasEvery: categories || [] },
+        category: { hasEvery: categories ?? [] },
       },
     });
 
@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
         price: { lte: price },
         type: { in: types },
         seats: { in: seats },
-        category: { hasEvery: categories || [] },
+        category: { hasEvery: categories ?? [] },
       },
     });
 

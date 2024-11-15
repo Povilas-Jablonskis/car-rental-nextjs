@@ -37,7 +37,7 @@ export default function ListOfTypes() {
   return (
     <div className="grid gap-y-7">
       <p className="text-xs font-semibold text-secondary-300">T Y P E</p>
-      {Object.entries(data || {}).map(([name, value]) => (
+      {Object.entries(data).map(([name, value]) => (
         <Checkbox
           key={name}
           id={name}

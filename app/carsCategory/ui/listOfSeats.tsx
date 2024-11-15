@@ -40,7 +40,7 @@ export default function ListOfSeats() {
       <p className="text-xs font-semibold text-secondary-300">
         C A P A C I T Y
       </p>
-      {Object.entries(data || {}).map(([name, value]) => (
+      {Object.entries(data).map(([name, value]) => (
         <Checkbox
           key={name}
           id={name}

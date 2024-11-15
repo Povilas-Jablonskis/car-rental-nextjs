@@ -21,11 +21,6 @@ export default function FormInput<T extends object>({
   });
 
   return (
-    <Input
-      {...restProps}
-      {...restField}
-      value={value != null ? value : ""}
-      error={error}
-    />
+    <Input {...restProps} {...restField} value={value ?? ""} error={error} />
   );
 }
