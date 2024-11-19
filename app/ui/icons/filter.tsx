@@ -1,4 +1,4 @@
-export default function FilterIcon() {
+export default function FilterIcon(props: React.SVGAttributes<SVGElement>) {
   return (
     <svg
       width="24"
@@ -6,6 +6,7 @@ export default function FilterIcon() {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         d="M22 6.5H16"

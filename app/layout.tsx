@@ -17,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${plus_jakarta_sans.className} text-sm`}>
+      <body
+        className={`${plus_jakarta_sans.className} bg-background text-xs 2xl:text-sm`}
+      >
         <div className="flex h-screen flex-col">
           <Providers>
             <Header />

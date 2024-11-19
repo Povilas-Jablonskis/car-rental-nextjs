@@ -15,11 +15,11 @@ const config: Config = {
       colors: {
         navbar: "#C3D4E9",
         primary: {
-          100: "#D6E4FD",
           300: "#85A8F8",
           500: "#3563E9",
           700: "#1A37A7",
           focused: "#CEBEFE",
+          skeleton: "#EFF3FD",
         },
         secondary: {
           300: "#90A3BF",
@@ -29,10 +29,14 @@ const config: Config = {
         information: {
           500: "#54A6FF",
         },
+        background: "#F6F7F9",
       },
       fontSize: {
         "2base": ["2rem", "2.5rem"],
         "2sm": ["1.75rem", "2.5rem"],
+      },
+      textColor: {
+        footer: "#0d0d0d99",
       },
     },
   },

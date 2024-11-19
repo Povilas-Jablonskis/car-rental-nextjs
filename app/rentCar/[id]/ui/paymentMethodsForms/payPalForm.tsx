@@ -12,7 +12,10 @@ export default function PayPalForm(
   const checked = watch("paymentMethod") === PaymentMethod.PayPal;
 
   return (
-    <div {...props} className="grid gap-y-8 rounded-xl bg-[#F6F7F9] p-6">
+    <div
+      {...props}
+      className="grid gap-y-5 rounded-xl bg-background p-4 xl:gap-y-8 xl:p-6"
+    >
       <div className="flex justify-between">
         <FormRadio
           name="paymentMethod"
@@ -24,16 +27,14 @@ export default function PayPalForm(
         <PayPalIcon />
       </div>
       {checked && (
-        <div className="grid grid-cols-2">
-          <FormInput
-            name="email"
-            type="email"
-            label="E-mail"
-            placeholder="E-mail"
-            className="bg-white"
-            control={control}
-          />
-        </div>
+        <FormInput
+          name="email"
+          type="email"
+          label="E-mail"
+          placeholder="E-mail"
+          inverted
+          control={control}
+        />
       )}
     </div>
   );

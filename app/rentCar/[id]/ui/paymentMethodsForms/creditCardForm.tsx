@@ -13,7 +13,10 @@ export default function CreditCardForm(
   const checked = watch("paymentMethod") === PaymentMethod.CC;
 
   return (
-    <div {...props} className="grid gap-y-8 rounded-xl bg-[#F6F7F9] p-6">
+    <div
+      {...props}
+      className="grid gap-y-5 rounded-xl bg-background p-4 xl:gap-y-8 xl:p-6"
+    >
       <div className="flex justify-between">
         <FormRadio
           name="paymentMethod"
@@ -25,12 +28,12 @@ export default function CreditCardForm(
         <VisaMastercardIcon />
       </div>
       {checked && (
-        <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+        <div className="grid gap-x-8 gap-y-5 lg:grid-cols-2 xl:gap-y-6">
           <CardNumberInput
             name="cardNumber"
             label="Card Number"
             placeholder="Card number"
-            className="bg-white"
+            inverted
             control={control}
           />
           <FormInput
@@ -38,14 +41,14 @@ export default function CreditCardForm(
             type="date"
             label="Expration Date"
             placeholder="DD / MM / YY"
-            className="bg-white"
+            inverted
             control={control}
           />
           <FormInput
             name="cardHolder"
             label="Card Holder"
             placeholder="Card holder"
-            className="bg-white"
+            inverted
             control={control}
           />
           <FormInput
@@ -53,7 +56,7 @@ export default function CreditCardForm(
             type="number"
             label="CVC"
             placeholder="CVC"
-            className="bg-white"
+            inverted
             control={control}
           />
         </div>

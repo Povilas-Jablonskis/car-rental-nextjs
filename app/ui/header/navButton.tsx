@@ -8,10 +8,7 @@ export default function NavButton({
   return (
     <button
       {...rest}
-      className={clsx(
-        "rounded-full border border-navbar/40 p-[9px]",
-        className,
-      )}
+      className={clsx("rounded-full border border-navbar/40 p-2", className)}
     >
       {children}
     </button>

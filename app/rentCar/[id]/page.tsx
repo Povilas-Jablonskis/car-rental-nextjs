@@ -18,7 +18,7 @@ export default function Page({ params }: PageProps) {
 
   if (!data)
     return (
-      <div className="bg-[#F6F7F9] p-8">
+      <div className="p-8">
         <div className="flex flex-col items-center justify-center gap-y-2">
           <h2 className="text-xl font-semibold">404 Not Found</h2>
           <p>Could not find the requested car.</p>
@@ -27,8 +27,8 @@ export default function Page({ params }: PageProps) {
     );
 
   return (
-    <div className="bg-[#F6F7F9] p-8">
-      <div className="flex items-start gap-x-8">
+    <div className="p-6 lg:p-8">
+      <div className="grid gap-8 lg:grid-cols-[auto_36%]">
         <RentalForm />
         <RentalSummary data={data} />
       </div>

@@ -12,15 +12,15 @@ export default function Review({ review }: ReviewProps) {
     <div className="flex gap-x-4">
       <Image
         priority
+        width={0}
+        height={0}
+        className="size-11 self-start xl:size-14"
         src={review.image}
-        width={56}
-        height={56}
-        className="self-start"
         alt="Profile picture"
       />
       <div className="flex flex-1 flex-col">
         <div className="mb-2 flex place-content-between">
-          <span className="text-xl font-bold text-secondary-500">
+          <span className="text-base font-semibold text-secondary-500 xl:text-xl xl:font-bold">
             {review.name}
           </span>
           <span className="text-end font-medium text-secondary-300">
@@ -34,9 +34,15 @@ export default function Review({ review }: ReviewProps) {
           <div className="flex gap-x-0.5">
             {[...Array(5).keys()].map((x) =>
               x < review.score ? (
-                <PositiveReviewIcon key={`${x}Positive`} />
+                <PositiveReviewIcon
+                  className="size-3 xl:size-5"
+                  key={`${x}Positive`}
+                />
               ) : (
-                <NegativeReviewIcon key={`${x}Negative`} />
+                <NegativeReviewIcon
+                  className="size-3 xl:size-5"
+                  key={`${x}Negative`}
+                />
               ),
             )}
           </div>

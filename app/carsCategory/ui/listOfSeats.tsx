@@ -36,7 +36,7 @@ export default function ListOfSeats() {
   }
 
   return (
-    <div className="grid gap-y-7">
+    <div className="grid gap-y-4 2xl:gap-y-7">
       <p className="text-xs font-semibold text-secondary-300">
         C A P A C I T Y
       </p>
@@ -50,7 +50,7 @@ export default function ListOfSeats() {
         >
           <label
             htmlFor={name}
-            className="text-start text-xl font-semibold leading-5 text-secondary-400 hover:cursor-pointer"
+            className="text-start text-base font-semibold leading-5 text-secondary-400 hover:cursor-pointer 2xl:text-xl"
           >
             {CarSeat[Number(name)]}{" "}
             <label htmlFor={name} className="text-secondary-300">

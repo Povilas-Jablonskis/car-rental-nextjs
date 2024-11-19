@@ -12,8 +12,8 @@ import DateTimeLocationPicker from "./ui/panels/dateTimeLocationPicker";
 
 export default function Home() {
   return (
-    <div className="bg-[#F6F7F9] px-16 py-8 pb-16">
-      <div className="mb-8 grid grid-cols-2 gap-x-8">
+    <div className="px-6 py-8 pb-16 2xl:px-16">
+      <div className="mb-8 grid gap-8 md:grid-cols-2">
         <Ad
           title="The Best Platform for Car Rental"
           subTitle="Ease of doing a car rental safely and reliably. Of course at a low price."
@@ -31,23 +31,23 @@ export default function Home() {
           <Image className="mx-auto" priority src={car8} alt="Car" />
         </Ad>
       </div>
-      <div className="mb-9 grid auto-cols-[1fr_max-content_1fr] grid-flow-col gap-x-11">
+      <div className="mb-9 grid gap-8 lg:grid-cols-[1fr_max-content_1fr] lg:gap-11">
         <DateTimeLocationPicker label="Pick - Up" />
-        <PrimaryButton className="self-center !p-[17px] shadow-[0_0_50px_11px_rgba(16,50,147,0.28)]">
+        <PrimaryButton className="place-self-center !p-4 shadow-[0_0_50px_11px_rgba(16,50,147,0.28)]">
           <SwapIcon />
         </PrimaryButton>
         <DateTimeLocationPicker label="Drop - Off" />
       </div>
       <div className="grid gap-y-8">
         <CarList
-          className="grid-cols-4"
+          className="md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           pageSize={4}
           categories={[CarCategory.Ropular]}
         >
           <CarListTitle title="Popular Cars" searchParams={{}} />
         </CarList>
         <CarList
-          className="grid-cols-4"
+          className="md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           pageSize={8}
           categories={[CarCategory.Recommended]}
           showMoreCars

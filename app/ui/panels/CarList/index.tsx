@@ -45,7 +45,7 @@ export default function CarList({
   return (
     <div>
       {children}
-      <div {...rest} className={clsx("grid gap-8", className)}>
+      <div {...rest} className={clsx("grid gap-5 xl:gap-8", className)}>
         {data?.pages.map((group) => (
           <Fragment key={JSON.stringify(group)}>
             {group?.data.map((car) => (
@@ -57,7 +57,6 @@ export default function CarList({
       {hasNextPage && showMoreCars && (
         <div className="flex place-items-center pt-16">
           <PrimaryButton
-            size="lg"
             className="mx-auto"
             disabled={isFetchingNextPage}
             onClick={() => fetchNextPage()}

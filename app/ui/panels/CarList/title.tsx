@@ -18,17 +18,17 @@ export default function CarListTitle({
   return (
     <div
       {...rest}
-      className={clsx("mb-8 flex place-content-between", className)}
+      className={clsx("mb-5 flex place-content-between xl:mb-8", className)}
     >
       {title && (
-        <span className="text-base font-semibold text-secondary-300">
+        <span className="text-sm font-semibold text-secondary-300 lg:text-base">
           {title}
         </span>
       )}
 
       {searchParams && (
         <button
-          className="text-end text-base font-semibold text-primary-500"
+          className="text-end text-xs font-semibold text-primary-500 lg:text-base"
           onClick={() =>
             push(
               `/carsCategory?${new URLSearchParams(searchParams).toString()}`,

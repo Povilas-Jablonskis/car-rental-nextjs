@@ -50,6 +50,7 @@ export default function SelectPrice() {
       <p className="text-xs font-semibold text-secondary-300">P R I C E</p>
       <div className="flex flex-col gap-y-3">
         <Input
+          className="text-base"
           type="number"
           ref={inputRef}
           defaultValue={price}

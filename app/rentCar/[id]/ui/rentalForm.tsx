@@ -28,17 +28,19 @@ export default function RentalForm() {
     <FormProvider {...methods}>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid flex-1 basis-[30%] gap-y-8 *:bg-white *:p-6"
+        className="grid gap-y-8 *:rounded-xl *:bg-white *:p-4 2xl:*:p-6"
       >
         <div>
-          <p className="mb-1 text-xl font-bold text-secondary-500">
-            Billing Info
-          </p>
-          <div className="mb-8 flex justify-between font-medium text-secondary-300">
-            <p>Please enter your billing info</p>
-            <p>Step 1 of 4</p>
+          <div className="mb-6 flex justify-between font-medium text-secondary-300 md:mb-8">
+            <div className="grid gap-y-1">
+              <p className="text-base font-bold text-secondary-500 md:text-xl">
+                Billing Info
+              </p>
+              <p>Please enter your billing info</p>
+            </div>
+            <p className="md:self-end">Step 1 of 4</p>
           </div>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+          <div className="grid gap-5 gap-x-8 md:grid-cols-2 md:gap-y-6">
             <FormInput
               name="customerName"
               label="Name"
@@ -67,25 +69,29 @@ export default function RentalForm() {
           </div>
         </div>
         <div>
-          <p className="mb-1 text-xl font-bold text-secondary-500">
-            Rental Info
-          </p>
-          <div className="mb-8 flex justify-between font-medium text-secondary-300">
-            <p>Please select your rental date</p>
-            <p>Step 2 of 4</p>
+          <div className="mb-6 flex justify-between font-medium text-secondary-300 md:mb-8">
+            <div className="grid gap-y-1">
+              <p className="text-base font-bold text-secondary-500 md:text-xl">
+                Rental Info
+              </p>
+              <p>Please select your rental date</p>
+            </div>
+            <p className="md:self-end">Step 2 of 4</p>
           </div>
-          <div className="grid gap-y-8">
+          <div className="grid gap-y-6 md:gap-y-8">
             <RentalInfoPicker type="pickup" control={control} />
             <RentalInfoPicker type="dropoff" control={control} />
           </div>
         </div>
         <div>
-          <p className="mb-1 text-xl font-bold text-secondary-500">
-            Payment Method
-          </p>
-          <div className="mb-8 flex justify-between font-medium text-secondary-300">
-            <p>Please enter your payment method</p>
-            <p>Step 3 of 4</p>
+          <div className="mb-6 flex justify-between font-medium text-secondary-300 md:mb-8">
+            <div className="grid gap-y-1">
+              <p className="text-base font-bold text-secondary-500 md:text-xl">
+                Payment Method
+              </p>
+              <p>Please enter your payment method</p>
+            </div>
+            <p className="md:self-end">Step 3 of 4</p>
           </div>
           <div className="grid gap-y-6">
             <CreditCardForm />
@@ -94,46 +100,47 @@ export default function RentalForm() {
           </div>
         </div>
         <div>
-          <p className="mb-1 text-xl font-bold text-secondary-500">
-            Confirmation
-          </p>
-          <div className="mb-8 flex justify-between font-medium text-secondary-300">
-            <p>
-              We are getting to the end. Just few clicks and your rental is
-              ready!
-            </p>
-            <p>Step 4 of 4</p>
+          <div className="mb-6 grid grid-cols-[49%_auto] justify-between font-medium text-secondary-300 md:mb-8">
+            <div className="grid gap-y-1">
+              <p className="text-base font-bold text-secondary-500 md:text-xl">
+                Confirmation
+              </p>
+              <p>
+                We are getting to the end. Just few clicks and your rental is
+                ready!
+              </p>
+            </div>
+            <div className="md:self-end">Step 4 of 4</div>
           </div>
-          <div className="grid gap-y-6">
+          <div className="grid gap-y-5 md:gap-y-6">
             <Checkbox
               id="agreeWithMarketing"
               label="I agree with sending an Marketing and newsletter emails. No spam, promissed!"
-              className="gap-x-[20px] rounded-lg bg-[#F6F7F9] px-8 py-4"
+              className="gap-x-5 rounded-lg bg-background px-4 py-2.5 md:px-8 md:py-4"
             />
             <FormCheckbox
               name="agreeWithTerms"
               id="agreeWithTerms"
               control={control}
               label="I agree with our terms and conditions and privacy policy."
-              className="gap-x-[20px] rounded-lg bg-[#F6F7F9] px-8 py-4"
+              className="gap-x-5 rounded-lg bg-background px-4 py-2.5 md:px-8 md:py-4"
             />
+          </div>
+          <div className="mt-6 grid">
             <PrimaryButton
               type="submit"
-              size="lg"
-              className="place-self-start !px-8 !py-4 !font-bold"
+              className="mb-8 place-self-start !px-8 !py-4 !font-bold"
             >
               Rent Now
             </PrimaryButton>
-            <div>
-              <SecuritySafetyIcon className="mb-4" />
-              <p className="mb-1 text-base font-semibold text-secondary-500">
-                All your data are safe
-              </p>
-              <p className="font-medium text-secondary-300">
-                We are using the most advanced security to provide you the best
-                experience ever.
-              </p>
-            </div>
+            <SecuritySafetyIcon className="mb-3 md:mb-4" />
+            <p className="mb-1 text-base font-semibold text-secondary-500">
+              All your data are safe
+            </p>
+            <p className="font-medium text-secondary-300">
+              We are using the most advanced security to provide you the best
+              experience ever.
+            </p>
           </div>
         </div>
       </form>

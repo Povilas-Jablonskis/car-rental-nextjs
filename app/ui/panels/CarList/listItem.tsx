@@ -27,51 +27,53 @@ export default function ListItem({
   const [favourite, setFavourite] = useState(car.favourite);
 
   return (
-    <div {...rest} className="flex min-h-96 flex-col rounded-xl bg-white p-6">
+    <div {...rest} className="flex flex-col rounded-xl bg-white p-4 2xl:p-6">
       <div className="flex place-content-between">
-        <span className="text-xl font-bold text-secondary-500">{car.name}</span>
+        <span className="text-base font-semibold text-secondary-500 xl:font-bold 2xl:text-xl">
+          {car.name}
+        </span>
         <button onClick={() => setFavourite((x) => !x)}>
           <HeartIcon
             className={clsx({
-              "*:fill-[#ED3F3F] *:stroke-[#ED3F3F]": favourite,
               "*:fill-transparent *:stroke-secondary-300": !favourite,
             })}
           />
         </button>
       </div>
       <span className="font-bold text-secondary-300">{car.type}</span>
-      <Image
-        width={0}
-        height={0}
-        style={{ width: "auto" }}
-        className="m-auto"
-        priority
-        src={car.image}
-        alt="Car"
-      />
-      <div className="mb-6 flex place-content-between">
-        <div className="flex items-center gap-x-1.5">
-          <TankSizeIcon />
-          <span className="font-medium text-secondary-300">
-            {car.fuelTank}L
-          </span>
-        </div>
-        <div className="flex items-center gap-x-1.5">
-          <GearTypeIcon />
-          <span className="font-medium text-secondary-300">{car.gear}</span>
-        </div>
-        <div className="flex items-center gap-x-1.5">
-          <SeatsIcon />
-          <span className="font-medium text-secondary-300">
-            {car.seats} {car.seats > 1 ? "Persons" : "Person"}
-          </span>
+      <div className="mb-11 mt-8 flex place-items-end xl:m-0 xl:flex-1 xl:flex-col xl:place-items-stretch">
+        <Image
+          priority
+          width={0}
+          height={0}
+          className="m-auto max-h-16 w-auto md:max-w-40 xl:mb-11 xl:mt-8 xl:max-h-fit"
+          src={car.image}
+          alt="Car"
+        />
+        <div className="flex flex-col gap-y-4 xl:mb-6 xl:flex-row xl:place-content-between">
+          <div className="flex items-center gap-x-1.5">
+            <TankSizeIcon className="size-3.5 xl:size-6" />
+            <span className="font-medium text-secondary-300">
+              {car.fuelTank}L
+            </span>
+          </div>
+          <div className="flex items-center gap-x-1.5">
+            <GearTypeIcon className="size-3.5 xl:size-6" />
+            <span className="font-medium text-secondary-300">{car.gear}</span>
+          </div>
+          <div className="flex items-center gap-x-1.5">
+            <SeatsIcon className="size-3.5 xl:size-6" />
+            <span className="font-medium text-secondary-300">
+              {car.seats} {car.seats > 1 ? "Persons" : "Person"}
+            </span>
+          </div>
         </div>
       </div>
       <div className="flex place-content-between">
         <div className="grid place-content-center">
-          <span className="text-xl font-bold text-secondary-500">
+          <span className="text-base font-bold text-secondary-500 2xl:text-xl">
             {formatNumber(car.price)}/
-            <span className="text-sm font-bold text-secondary-300">day</span>
+            <span className="font-bold text-secondary-300">day</span>
           </span>
           {car.oldPrice != null && (
             <s className="font-bold text-secondary-300">
@@ -80,7 +82,6 @@ export default function ListItem({
           )}
         </div>
         <PrimaryButton
-          size="lg"
           onClick={() =>
             push(
               `/carsCategory/${car.id}?${new URLSearchParams(searchParams).toString()}`,

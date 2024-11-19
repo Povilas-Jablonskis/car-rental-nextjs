@@ -1,4 +1,4 @@
-export default function SeatsIcon() {
+export default function SeatsIcon(props: React.SVGAttributes<SVGElement>) {
   return (
     <svg
       width="24"
@@ -6,6 +6,7 @@ export default function SeatsIcon() {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         d="M9 2C6.38 2 4.25 4.13 4.25 6.75C4.25 9.32 6.26 11.4 8.88 11.49C8.96 11.48 9.04 11.48 9.1 11.49C9.12 11.49 9.13 11.49 9.15 11.49C9.16 11.49 9.16 11.49 9.17 11.49C11.73 11.4 13.74 9.32 13.75 6.75C13.75 4.13 11.62 2 9 2Z"

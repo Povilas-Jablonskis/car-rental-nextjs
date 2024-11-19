@@ -15,14 +15,14 @@ export default function Page({ searchParams, params }: PageProps) {
     <div className="grid gap-y-8">
       <CarDetails params={params} />
       <CarList
-        className="grid-cols-3"
+        className="lg:grid-cols-2 xl:grid-cols-3"
         pageSize={3}
         categories={[CarCategory.Recent]}
       >
         <CarListTitle title="Recent Cars" searchParams={searchParams} />
       </CarList>
       <CarList
-        className="grid-cols-3"
+        className="lg:grid-cols-2 xl:grid-cols-3"
         pageSize={3}
         categories={[CarCategory.Recommended]}
       >

@@ -20,35 +20,42 @@ export default function RentalSummary({ data }: RentalSummaryProps) {
   );
 
   return (
-    <div className="flex-1 bg-white p-6">
-      <div className="grid gap-y-1 pb-8">
-        <p className="text-xl font-bold text-secondary-500">Rental Summary</p>
+    <div className="row-start-1 rounded-xl bg-white p-4 lg:row-auto lg:self-start 2xl:p-6">
+      <div className="grid gap-y-1 pb-6 2xl:pb-8">
+        <p className="text-base font-bold text-secondary-500 2xl:text-xl">
+          Rental Summary
+        </p>
         <p className="font-medium text-secondary-300">
           Prices may change depending on the length of the rental and the price
           of your rental car.
         </p>
       </div>
-      <div className="flex place-items-center gap-x-4 border border-transparent border-b-navbar/40 pb-8">
+      <div className="flex place-items-center gap-x-4 border border-transparent border-b-navbar/40 pb-6 2xl:pb-8">
         <Image
           priority
           width={0}
           height={0}
-          style={{ width: 132, height: 108 }}
-          className="me-4"
+          className="me-4 h-20 w-28 lg:h-28 lg:w-32"
           src={data.image}
           alt="Car"
         />
-        <div className="grid gap-y-2">
-          <div className="text-2base font-bold text-secondary-500">
+        <div className="grid gap-y-3">
+          <div className="text-xl font-bold text-secondary-500 2xl:text-2base">
             {data.name}
           </div>
-          <div className="flex gap-x-2">
+          <div className="flex flex-col gap-x-2 gap-y-1 2xl:flex-row">
             <div className="flex gap-x-0.5">
-              {[...Array(5)].map((_, idx) =>
-                idx < score ? (
-                  <PositiveReviewIcon key={idx} />
+              {[...Array(5).keys()].map((x) =>
+                x < score ? (
+                  <PositiveReviewIcon
+                    className="size-3 2xl:size-5"
+                    key={`${x}Positive`}
+                  />
                 ) : (
-                  <NegativeReviewIcon key={idx} />
+                  <NegativeReviewIcon
+                    className="size-3 2xl:size-5"
+                    key={`${x}Negative`}
+                  />
                 ),
               )}
             </div>
@@ -58,39 +65,41 @@ export default function RentalSummary({ data }: RentalSummaryProps) {
           </div>
         </div>
       </div>
-      <div className="flex justify-between gap-y-2 pt-8">
-        <span className="text-base font-medium text-secondary-300">
+      <div className="flex place-items-center justify-between gap-y-2 pt-4 2xl:pt-8">
+        <span className="text-xs font-semibold text-secondary-300 2xl:text-base 2xl:font-medium">
           Subtotal
         </span>
         <span className="text-base font-semibold text-secondary-500">
           {formatNumber(data.price)}
         </span>
       </div>
-      <div className="flex justify-between gap-y-2 pt-6">
-        <span className="text-base font-medium text-secondary-300">Tax</span>
+      <div className="flex place-items-center justify-between gap-y-2 pt-3 2xl:pt-6">
+        <span className="text-xs font-semibold text-secondary-300 2xl:text-base 2xl:font-medium">
+          Tax
+        </span>
         <span className="text-base font-semibold text-secondary-500">
           {formatNumber(new Prisma.Decimal(0))}
         </span>
       </div>
-      <div className="mt-8 flex justify-between rounded bg-[#F6F7F9] px-8 py-4">
+      <div className="mt-6 flex justify-between rounded bg-background px-5 py-2.5 lg:mt-8 2xl:px-8 2xl:py-4">
         <Input placeholder="Apply promo code" className="!rounded-none !p-0" />
         <button
           type="button"
-          className="my-auto text-base font-semibold text-secondary-500"
+          className="my-auto text-xs font-semibold text-secondary-500 2xl:text-base"
         >
           Apply now
         </button>
       </div>
-      <div className="flex justify-between pt-8">
+      <div className="flex justify-between pt-6 2xl:pt-8">
         <div className="grid gap-y-1">
-          <span className="text-xl font-bold text-secondary-500">
+          <span className="text-base font-bold text-secondary-500 2xl:text-xl">
             Total Rental Price
           </span>
           <span className="font-medium text-secondary-300">
             Overall price and includes rental discount
           </span>
         </div>
-        <p className="my-auto text-2base font-bold text-secondary-500">
+        <p className="my-auto text-xl font-bold text-secondary-500 2xl:text-2base">
           {formatNumber(data.price)}
         </p>
       </div>

@@ -27,7 +27,7 @@ export default function CarDetails({ params }: CarDetailsProps) {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-x-8">
+      <div className="grid gap-8 lg:grid-cols-2">
         <ImageSlider car={data} />
         <CarInformation car={data} />
       </div>

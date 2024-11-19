@@ -10,16 +10,16 @@ interface PageProps {
 export default function Page({ searchParams }: PageProps) {
   return (
     <>
-      <div className="mb-9 grid auto-cols-[1fr_max-content_1fr] grid-flow-col gap-x-11">
+      <div className="mb-9 grid gap-8 xl:grid-cols-[1fr_max-content_1fr] xl:gap-11">
         <DateTimeLocationPicker label="Pick - Up" />
-        <PrimaryButton className="self-center !p-[17px] shadow-[0_0_50px_11px_rgba(16,50,147,0.28)]">
+        <PrimaryButton className="place-self-center !p-4 shadow-[0_0_50px_11px_rgba(16,50,147,0.28)]">
           <SwapIcon />
         </PrimaryButton>
         <DateTimeLocationPicker label="Drop - Off" />
       </div>
       <div className="grid gap-y-8">
         <CarList
-          className="grid-cols-3"
+          className="xl:grid-cols-3"
           pageSize={9}
           searchParams={searchParams}
           categories={[]}
