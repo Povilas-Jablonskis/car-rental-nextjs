@@ -1,7 +1,7 @@
-import PrimaryButton from "../ui/buttons/primary";
-import SwapIcon from "../ui/icons/swap";
-import CarList from "../ui/panels/CarList";
-import DateTimeLocationPicker from "../ui/panels/dateTimeLocationPicker";
+import PrimaryButton from "../_components/buttons/primary";
+import DateTimeLocationPicker from "../_components/dateTimeLocationPicker";
+import SwapIcon from "../_components/icons/swap";
+import CarList from "../_components/panels/CarList";
 
 interface PageProps {
   searchParams: Promise<Record<string, string>>;
