@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import Footer from "./_components/footer";
+import Header from "./_components/header";
+import { plus_jakarta_sans } from "./_lib/fonts";
 import "./globals.css";
 import Providers from "./providers";
-import { plus_jakarta_sans } from "./ui/fonts";
-import Footer from "./ui/footer";
-import Header from "./ui/header";
 
 export const metadata: Metadata = {
   title: "Create Next App",

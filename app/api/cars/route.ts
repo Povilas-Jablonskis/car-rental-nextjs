@@ -1,4 +1,4 @@
-import { InfiniteQueryResponse } from "@/app/lib/hooks";
+import { InfiniteQueryResponse } from "@/app/_lib/hooks";
 import { CarCategory, Cars, CarType, PrismaClient } from "@prisma/client";
 import { isDynamicServerError } from "next/dist/client/components/hooks-server-context";
 import { NextRequest, NextResponse } from "next/server";

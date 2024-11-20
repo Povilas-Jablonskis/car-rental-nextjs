@@ -2,13 +2,13 @@ import { CarCategory } from "@prisma/client";
 import Image from "next/image";
 import car7 from "../public/images/car7.png";
 import car8 from "../public/images/car8.png";
-import PrimaryButton from "./ui/buttons/primaryButton";
-import RentalCarButton from "./ui/buttons/rentalCarButton";
-import SwapIcon from "./ui/icons/swap";
-import Ad from "./ui/panels/ad";
-import CarList from "./ui/panels/CarList";
-import CarListTitle from "./ui/panels/CarList/title";
-import DateTimeLocationPicker from "./ui/panels/dateTimeLocationPicker";
+import PrimaryButton from "./_components/buttons/primary";
+import RentalCarButton from "./_components/buttons/rental";
+import DateTimeLocationPicker from "./_components/dateTimeLocationPicker";
+import SwapIcon from "./_components/icons/swap";
+import Ad from "./_components/panels/ad";
+import CarList from "./_components/panels/CarList";
+import CarListTitle from "./_components/panels/CarList/title";
 
 export default function Home() {
   return (

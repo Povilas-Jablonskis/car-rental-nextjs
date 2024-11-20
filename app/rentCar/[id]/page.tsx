@@ -1,10 +1,10 @@
 "use client";
 
-import { useGetCar } from "@/app/lib/hooks";
+import { useGetCar } from "@/app/_lib/hooks";
 import { use } from "react";
-import RentalForm from "./ui/rentalForm";
-import RentalFormSkeleton from "./ui/rentalFormSkeleton";
-import RentalSummary from "./ui/rentalSummary";
+import RentalForm from "./components/form";
+import RentalFormSkeleton from "./components/form/skeleton";
+import RentalSummary from "./components/rentalSummary";
 
 interface PageProps {
   params: Promise<{
