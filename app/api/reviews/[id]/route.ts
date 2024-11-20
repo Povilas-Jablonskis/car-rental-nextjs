@@ -3,14 +3,16 @@ import { PrismaClient, Reviews } from "@prisma/client";
 import { isDynamicServerError } from "next/dist/client/components/hooks-server-context";
 import { NextRequest, NextResponse } from "next/server";
 
-interface GETProps {
-  params: {
-    id: string;
-  };
-}
+type Params = Promise<{
+  id: string;
+}>;
 
-export async function GET(request: NextRequest, { params }: GETProps) {
+export async function GET(
+  request: NextRequest,
+  segmentData: { params: Params },
+) {
   try {
+    const { id } = await segmentData.params;
     const prisma = new PrismaClient();
 
     const searchParams = request.nextUrl.searchParams;
@@ -20,7 +22,7 @@ export async function GET(request: NextRequest, { params }: GETProps) {
 
     const count = await prisma.reviews.count({
       where: {
-        carsId: { equals: params.id },
+        carsId: { equals: id },
       },
     });
 
@@ -28,7 +30,7 @@ export async function GET(request: NextRequest, { params }: GETProps) {
       skip: currentPageNumber * pageSize,
       take: pageSize,
       where: {
-        carsId: { equals: params.id },
+        carsId: { equals: id },
       },
     });
 

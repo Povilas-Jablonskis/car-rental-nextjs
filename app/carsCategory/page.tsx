@@ -4,10 +4,12 @@ import CarList from "../ui/panels/CarList";
 import DateTimeLocationPicker from "../ui/panels/dateTimeLocationPicker";
 
 interface PageProps {
-  searchParams: Record<string, string>;
+  searchParams: Promise<Record<string, string>>;
 }
 
-export default function Page({ searchParams }: PageProps) {
+export default async function Page({ searchParams }: PageProps) {
+  const resolvedSearchParams = await searchParams;
+
   return (
     <>
       <div className="mb-9 grid gap-8 xl:grid-cols-[1fr_max-content_1fr] xl:gap-11">
@@ -21,7 +23,7 @@ export default function Page({ searchParams }: PageProps) {
         <CarList
           className="xl:grid-cols-3"
           pageSize={9}
-          searchParams={searchParams}
+          searchParams={resolvedSearchParams}
           categories={[]}
         />
       </div>

@@ -2,19 +2,18 @@ import { PrismaClient } from "@prisma/client";
 import { isDynamicServerError } from "next/dist/client/components/hooks-server-context";
 import { NextRequest, NextResponse } from "next/server";
 
-interface GETProps {
-  params: {
-    id: string;
-  };
-}
+type Params = Promise<{
+  id: string;
+}>;
 
-export async function GET(_: NextRequest, { params }: GETProps) {
+export async function GET(_: NextRequest, segmentData: { params: Params }) {
   try {
+    const { id } = await segmentData.params;
     const prisma = new PrismaClient();
 
     const car = await prisma.cars.findFirst({
       where: {
-        id: { equals: params.id },
+        id: { equals: id },
       },
       include: {
         reviews: true,

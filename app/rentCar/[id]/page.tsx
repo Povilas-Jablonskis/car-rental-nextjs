@@ -1,18 +1,20 @@
 "use client";
 
 import { useGetCar } from "@/app/lib/hooks";
+import { use } from "react";
 import RentalForm from "./ui/rentalForm";
 import RentalFormSkeleton from "./ui/rentalFormSkeleton";
 import RentalSummary from "./ui/rentalSummary";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default function Page({ params }: PageProps) {
-  const { data, isLoading } = useGetCar(params.id);
+  const { id } = use(params);
+  const { data, isLoading } = useGetCar(id);
 
   if (isLoading) return <RentalFormSkeleton />;
 
