@@ -5,12 +5,12 @@ import Image from "next/image";
 import profile from "@/public/images/profile.png";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import SearchInput from "../controls/searchInput";
 import HamburgerIcon from "../icons/hamburger";
 import HeartIcon from "../icons/heart";
 import SettingsIcon from "../icons/settings";
 import NavButton from "./navButton";
 import NotificationsButton from "./notificationsButton";
+import SearchInput from "./searchInput";
 
 export default function Header() {
   const pathname = usePathname();
