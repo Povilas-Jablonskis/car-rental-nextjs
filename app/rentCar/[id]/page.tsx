@@ -29,7 +29,7 @@ export default function Page({ params }: PageProps) {
     );
 
   return (
-    <div className="p-6 lg:p-8">
+    <div className="p-6 2xl:p-8">
       <div className="grid gap-8 lg:grid-cols-[auto_36%]">
         <RentalForm />
         <RentalSummary data={data} />

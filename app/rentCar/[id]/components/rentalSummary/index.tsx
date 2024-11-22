@@ -82,7 +82,7 @@ export default function RentalSummary({ data }: RentalSummaryProps) {
           {formatNumber(new Prisma.Decimal(0))}
         </span>
       </div>
-      <div className="mt-6 flex justify-between rounded bg-background px-5 py-2.5 lg:mt-8 2xl:px-8 2xl:py-4">
+      <div className="mt-6 flex justify-between rounded bg-background px-5 py-2.5 2xl:mt-8 2xl:px-8 2xl:py-4">
         <Input placeholder="Apply promo code" className="!rounded-none !p-0" />
         <button
           type="button"
