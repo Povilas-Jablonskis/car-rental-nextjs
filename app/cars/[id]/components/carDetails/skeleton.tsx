@@ -5,7 +5,7 @@ export default function CarDetailsSkeleton() {
   return (
     <div className="grid gap-8 lg:grid-cols-2">
       <div className="grid">
-        <div className="mb-6 flex h-60 rounded-xl bg-white 2xl:min-h-96">
+        <div className="mb-6 flex h-60 rounded-xl bg-white 2xl:h-96">
           <GalleryIcon className="m-auto" width={60} height={60} />
         </div>
         <div className="grid grid-cols-3 gap-x-6">

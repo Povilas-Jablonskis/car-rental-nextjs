@@ -14,7 +14,7 @@ export default function PayPalForm(
   return (
     <div
       {...props}
-      className="grid gap-y-5 rounded-xl bg-background p-4 xl:gap-y-8 xl:p-6"
+      className="grid gap-y-5 rounded-xl bg-background p-4 2xl:gap-y-8 2xl:p-6"
     >
       <div className="flex justify-between">
         <FormRadio

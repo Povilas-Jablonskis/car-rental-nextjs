@@ -22,7 +22,7 @@ export default function Header() {
       <div className="flex flex-col-reverse gap-y-8 lg:flex-row lg:justify-between">
         <div className="flex flex-col gap-x-16 gap-y-6 lg:basis-2/4 lg:flex-row">
           <Link
-            className="self-start text-2xl font-bold text-primary-500 lg:self-center lg:text-2base"
+            className="self-start text-2xl font-bold text-primary-500 sm:text-2base lg:self-center"
             href="/"
           >
             MORENT
@@ -47,7 +47,7 @@ export default function Header() {
             src={profile}
             width={0}
             height={0}
-            className="size-7 cursor-pointer lg:size-11"
+            className="size-7 cursor-pointer sm:size-11"
             alt="Profile picture"
           />
         </div>

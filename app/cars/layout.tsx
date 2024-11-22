@@ -6,7 +6,7 @@ import SelectPrice from "./components/sidebar/selectPrice";
 export default function Layout(props: { children: React.ReactNode }) {
   return (
     <div className="flex">
-      <div className="hidden min-w-80 flex-col gap-y-8 bg-white px-6 py-8 lg:flex 2xl:gap-y-14 2xl:p-6">
+      <div className="hidden flex-col gap-y-14 bg-white p-6 lg:flex">
         <Suspense>
           <ListOfTypes />
           <ListOfSeats />

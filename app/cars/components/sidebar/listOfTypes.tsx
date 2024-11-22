@@ -1,10 +1,10 @@
 "use client";
 
-import Checkbox from "@/app/_components/controls/checkbox";
 import { useCarTotalTypes } from "@/app/_lib/hooks";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent } from "react";
+import Checkbox from "./checkbox";
 
 export default function ListOfTypes() {
   const searchParams = useSearchParams();
@@ -36,7 +36,7 @@ export default function ListOfTypes() {
   }
 
   return (
-    <div className="grid gap-y-4 2xl:gap-y-7">
+    <div className="grid gap-y-8">
       <p className="text-xs font-semibold text-secondary-300">T Y P E</p>
       {Object.entries(data).map(([name, value]) => (
         <Checkbox
@@ -45,17 +45,9 @@ export default function ListOfTypes() {
           value={name}
           defaultChecked={types?.some((x) => x === name)}
           onChange={onChange}
-        >
-          <label
-            htmlFor={name}
-            className="text-start text-base font-semibold leading-5 text-secondary-400 hover:cursor-pointer 2xl:text-xl"
-          >
-            {name}{" "}
-            <label htmlFor={name} className="text-secondary-300">
-              ({value})
-            </label>
-          </label>
-        </Checkbox>
+          label={name}
+          subLabel={value}
+        />
       ))}
     </div>
   );

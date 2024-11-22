@@ -40,14 +40,14 @@ export default function Home() {
       </div>
       <div className="grid gap-y-8">
         <CarList
-          className="md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          className="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           pageSize={4}
           categories={[CarCategory.Ropular]}
         >
           <CarListTitle title="Popular Cars" searchParams={{}} />
         </CarList>
         <CarList
-          className="md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          className="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           pageSize={8}
           categories={[CarCategory.Recommended]}
           showMoreCars

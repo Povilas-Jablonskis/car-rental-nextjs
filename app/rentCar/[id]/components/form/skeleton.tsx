@@ -20,11 +20,11 @@ export default function RentalFormSkeleton() {
                 <div className="h-4 w-28 rounded-lg bg-primary-300" />
                 <div className="h-4 w-28 rounded-lg bg-primary-skeleton" />
               </div>
-              <p className="self-center font-medium text-primary-300 xl:self-end">
+              <p className="self-center font-medium text-primary-300 sm:self-end">
                 Step 1 of 4
               </p>
             </div>
-            <div className="grid gap-x-8 gap-y-6 md:grid-cols-2 2xl:gap-y-9">
+            <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2 2xl:gap-y-9">
               <FormInputWithTitle />
               <FormInputWithTitle />
               <FormInputWithTitle />
@@ -37,18 +37,18 @@ export default function RentalFormSkeleton() {
                 <div className="h-4 w-28 rounded-lg bg-primary-300" />
                 <div className="h-4 w-28 rounded-lg bg-primary-skeleton" />
               </div>
-              <p className="self-center font-medium text-primary-300 xl:self-end">
+              <p className="self-center font-medium text-primary-300 sm:self-end">
                 Step 2 of 4
               </p>
             </div>
             <div className="mb-5 h-4 w-28 rounded-lg bg-primary-300 2xl:mb-6" />
-            <div className="grid gap-x-8 gap-y-6 md:grid-cols-2 2xl:gap-y-9">
+            <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2 2xl:gap-y-9">
               <FormInputWithTitle />
               <FormInputWithTitle />
               <FormInputWithTitle />
             </div>
             <div className="mb-5 mt-8 h-4 w-28 rounded-lg bg-primary-300 2xl:mb-6" />
-            <div className="grid gap-x-8 gap-y-6 md:grid-cols-2 2xl:gap-y-9">
+            <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2 2xl:gap-y-9">
               <FormInputWithTitle />
               <FormInputWithTitle />
               <FormInputWithTitle />
@@ -60,7 +60,7 @@ export default function RentalFormSkeleton() {
                 <div className="h-4 w-28 rounded-lg bg-primary-300" />
                 <div className="h-4 w-28 rounded-lg bg-primary-skeleton" />
               </div>
-              <p className="self-center font-medium text-primary-300 xl:self-end">
+              <p className="self-center font-medium text-primary-300 sm:self-end">
                 Step 3 of 4
               </p>
             </div>
@@ -69,33 +69,33 @@ export default function RentalFormSkeleton() {
                 <div className="flex place-items-end justify-between pb-6 2xl:pb-9">
                   <div className="flex place-items-center gap-x-4">
                     <div className="size-6 rounded-full border border-primary-300 bg-white" />
-                    <div className="h-4 w-20 rounded-lg bg-primary-300 2xl:w-28" />
+                    <div className="h-4 w-20 rounded-lg bg-primary-300 sm:w-28" />
                   </div>
-                  <div className="h-4 w-20 rounded-lg bg-white 2xl:w-28" />
+                  <div className="h-4 w-20 rounded-lg bg-white sm:w-28" />
                 </div>
-                <div className="grid gap-x-8 gap-y-6 md:grid-cols-2 2xl:gap-y-9">
+                <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2 2xl:gap-y-9">
                   <FormInputWithTitle />
                   <FormInputWithTitle />
                   <FormInputWithTitle />
                   <FormInputWithTitle />
-                </div>
-              </div>
-              <div className="rounded-xl bg-background">
-                <div className="flex place-items-end justify-between">
-                  <div className="flex place-items-center gap-x-4">
-                    <div className="size-6 rounded-full border border-primary-300 bg-white" />
-                    <div className="h-4 w-20 rounded-lg bg-primary-300 2xl:w-28" />
-                  </div>
-                  <div className="h-4 w-20 rounded-lg bg-white 2xl:w-28" />
                 </div>
               </div>
               <div className="rounded-xl bg-background">
                 <div className="flex place-items-end justify-between">
                   <div className="flex place-items-center gap-x-4">
                     <div className="size-6 rounded-full border border-primary-300 bg-white" />
-                    <div className="h-4 w-20 rounded-lg bg-primary-300 2xl:w-28" />
+                    <div className="h-4 w-20 rounded-lg bg-primary-300 sm:w-28" />
                   </div>
-                  <div className="h-4 w-20 rounded-lg bg-white 2xl:w-28" />
+                  <div className="h-4 w-20 rounded-lg bg-white sm:w-28" />
+                </div>
+              </div>
+              <div className="rounded-xl bg-background">
+                <div className="flex place-items-end justify-between">
+                  <div className="flex place-items-center gap-x-4">
+                    <div className="size-6 rounded-full border border-primary-300 bg-white" />
+                    <div className="h-4 w-20 rounded-lg bg-primary-300 sm:w-28" />
+                  </div>
+                  <div className="h-4 w-20 rounded-lg bg-white sm:w-28" />
                 </div>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function RentalFormSkeleton() {
                 <div className="h-4 w-28 rounded-lg bg-primary-300" />
                 <div className="h-4 w-28 rounded-lg bg-primary-skeleton" />
               </div>
-              <p className="self-center text-sm font-medium text-primary-300 xl:self-end">
+              <p className="self-center font-medium text-primary-300 sm:self-end">
                 Step 4 of 4
               </p>
             </div>

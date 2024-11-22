@@ -17,7 +17,7 @@ export default function RentalInfoPicker({
       <label className="text-base font-semibold text-secondary-500">
         {type === "dropoff" ? "Drop - Off" : "Pick - Up"}
       </label>
-      <div className="grid gap-x-8 gap-y-5 lg:grid-cols-2 xl:gap-y-6">
+      <div className="grid gap-x-8 gap-y-5 sm:grid-cols-2 2xl:gap-y-6">
         <FormInput
           name={`${type}City`}
           label="Locations"

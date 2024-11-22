@@ -23,8 +23,8 @@ export default function Reviews({ params, totalReviews }: ReviewsProps) {
   if (isLoading) return <ReviewsSkeleton pageSize={pageSize} />;
 
   return (
-    <div className="grid rounded-xl bg-white p-4 xl:p-6">
-      <div className="mb-6 flex gap-x-3 xl:mb-8">
+    <div className="grid rounded-xl bg-white p-4 2xl:p-6">
+      <div className="mb-6 flex gap-x-3 2xl:mb-8">
         <div className="text-xl font-semibold text-secondary-500">Reviews</div>
         <div className="rounded bg-primary-500 px-3 py-1.5 text-sm font-bold text-white">
           {totalReviews}

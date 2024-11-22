@@ -14,7 +14,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body
-        className={`${plus_jakarta_sans.className} bg-background text-xs 2xl:text-sm`}
+        className={`${plus_jakarta_sans.className} bg-background text-xs sm:text-sm`}
       >
         <div className="flex h-screen flex-col">
           <Providers>

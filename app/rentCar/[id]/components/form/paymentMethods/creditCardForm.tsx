@@ -15,7 +15,7 @@ export default function CreditCardForm(
   return (
     <div
       {...props}
-      className="grid gap-y-5 rounded-xl bg-background p-4 xl:gap-y-8 xl:p-6"
+      className="grid gap-y-5 rounded-xl bg-background p-4 2xl:gap-y-8 2xl:p-6"
     >
       <div className="flex justify-between">
         <FormRadio
@@ -28,7 +28,7 @@ export default function CreditCardForm(
         <VisaMastercardIcon />
       </div>
       {checked && (
-        <div className="grid gap-x-8 gap-y-5 lg:grid-cols-2 xl:gap-y-6">
+        <div className="grid gap-x-8 gap-y-5 sm:grid-cols-2 2xl:gap-y-6">
           <CardNumberInput
             name="cardNumber"
             label="Card Number"

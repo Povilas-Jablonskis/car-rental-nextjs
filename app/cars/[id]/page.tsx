@@ -18,14 +18,14 @@ export default async function Page({ searchParams, params }: PageProps) {
     <div className="grid gap-y-8">
       <CarDetails params={resolvedParams} />
       <CarList
-        className="lg:grid-cols-2 xl:grid-cols-3"
+        className="sm:grid-cols-2 xl:grid-cols-3"
         pageSize={3}
         categories={[CarCategory.Recent]}
       >
         <CarListTitle title="Recent Cars" searchParams={resolvedSearchParams} />
       </CarList>
       <CarList
-        className="lg:grid-cols-2 xl:grid-cols-3"
+        className="sm:grid-cols-2 xl:grid-cols-3"
         pageSize={3}
         categories={[CarCategory.Recommended]}
       >

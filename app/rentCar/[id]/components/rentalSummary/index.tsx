@@ -23,7 +23,7 @@ export default function RentalSummary({ data }: RentalSummaryProps) {
   return (
     <div className="row-start-1 rounded-xl bg-white p-4 lg:row-auto lg:self-start 2xl:p-6">
       <div className="grid gap-y-1 pb-6 2xl:pb-8">
-        <p className="text-base font-bold text-secondary-500 2xl:text-xl">
+        <p className="text-base font-bold text-secondary-500 sm:text-xl">
           Rental Summary
         </p>
         <p className="font-medium text-secondary-300">
@@ -41,20 +41,20 @@ export default function RentalSummary({ data }: RentalSummaryProps) {
           alt="Car"
         />
         <div className="grid gap-y-3">
-          <div className="text-xl font-bold text-secondary-500 2xl:text-2base">
+          <div className="text-xl font-bold text-secondary-500 sm:text-2xl 2xl:text-2base">
             {data.name}
           </div>
-          <div className="flex flex-col gap-x-2 gap-y-1 2xl:flex-row">
+          <div className="flex flex-col gap-x-2 gap-y-1 sm:flex-row">
             <div className="flex gap-x-0.5">
               {[...Array(5).keys()].map((x) =>
                 x < score ? (
                   <PositiveReviewIcon
-                    className="size-3 2xl:size-5"
+                    className="size-3 sm:size-5"
                     key={`${x}Positive`}
                   />
                 ) : (
                   <NegativeReviewIcon
-                    className="size-3 2xl:size-5"
+                    className="size-3 sm:size-5"
                     key={`${x}Negative`}
                   />
                 ),
@@ -67,7 +67,7 @@ export default function RentalSummary({ data }: RentalSummaryProps) {
         </div>
       </div>
       <div className="flex place-items-center justify-between gap-y-2 pt-4 2xl:pt-8">
-        <span className="text-xs font-semibold text-secondary-300 2xl:text-base 2xl:font-medium">
+        <span className="text-xs font-semibold text-secondary-300 sm:text-base sm:font-medium">
           Subtotal
         </span>
         <span className="text-base font-semibold text-secondary-500">
@@ -75,7 +75,7 @@ export default function RentalSummary({ data }: RentalSummaryProps) {
         </span>
       </div>
       <div className="flex place-items-center justify-between gap-y-2 pt-3 2xl:pt-6">
-        <span className="text-xs font-semibold text-secondary-300 2xl:text-base 2xl:font-medium">
+        <span className="text-xs font-semibold text-secondary-300 sm:text-base sm:font-medium">
           Tax
         </span>
         <span className="text-base font-semibold text-secondary-500">
@@ -86,21 +86,21 @@ export default function RentalSummary({ data }: RentalSummaryProps) {
         <Input placeholder="Apply promo code" className="!rounded-none !p-0" />
         <button
           type="button"
-          className="my-auto text-xs font-semibold text-secondary-500 2xl:text-base"
+          className="my-auto text-xs font-semibold text-secondary-500 sm:text-base"
         >
           Apply now
         </button>
       </div>
       <div className="flex justify-between pt-6 2xl:pt-8">
         <div className="grid gap-y-1">
-          <span className="text-base font-bold text-secondary-500 2xl:text-xl">
+          <span className="text-base font-bold text-secondary-500 sm:text-xl">
             Total Rental Price
           </span>
           <span className="font-medium text-secondary-300">
             Overall price and includes rental discount
           </span>
         </div>
-        <p className="my-auto text-xl font-bold text-secondary-500 2xl:text-2base">
+        <p className="my-auto text-xl font-bold text-secondary-500 sm:text-2base">
           {formatNumber(data.price)}
         </p>
       </div>

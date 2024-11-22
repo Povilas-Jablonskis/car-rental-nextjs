@@ -14,13 +14,13 @@ export default function Review({ review }: ReviewProps) {
         priority
         width={0}
         height={0}
-        className="size-11 self-start xl:size-14"
+        className="size-11 self-start sm:size-14"
         src={review.image}
         alt="Profile picture"
       />
       <div className="flex flex-1 flex-col">
         <div className="mb-2 flex place-content-between">
-          <span className="text-base font-semibold text-secondary-500 xl:text-xl xl:font-bold">
+          <span className="text-base font-semibold text-secondary-500 sm:text-xl sm:font-bold">
             {review.name}
           </span>
           <span className="text-end font-medium text-secondary-300">
@@ -35,12 +35,12 @@ export default function Review({ review }: ReviewProps) {
             {[...Array(5).keys()].map((x) =>
               x < review.score ? (
                 <PositiveReviewIcon
-                  className="size-3 xl:size-5"
+                  className="size-3 sm:size-5"
                   key={`${x}Positive`}
                 />
               ) : (
                 <NegativeReviewIcon
-                  className="size-3 xl:size-5"
+                  className="size-3 sm:size-5"
                   key={`${x}Negative`}
                 />
               ),

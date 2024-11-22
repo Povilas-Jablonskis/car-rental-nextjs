@@ -21,7 +21,7 @@ export default async function Page({ searchParams }: PageProps) {
       </div>
       <div className="grid gap-y-8">
         <CarList
-          className="xl:grid-cols-3"
+          className="sm:grid-cols-2 xl:grid-cols-3"
           pageSize={9}
           searchParams={resolvedSearchParams}
           categories={[]}
