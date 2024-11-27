@@ -1,6 +1,7 @@
 import CarList from "@/app/_components/panels/CarList";
 import CarListTitle from "@/app/_components/panels/CarList/title";
 import { CarCategory } from "@prisma/client";
+import { use } from "react";
 import CarDetails from "./components/carDetails";
 
 interface PageProps {
@@ -10,9 +11,9 @@ interface PageProps {
   }>;
 }
 
-export default async function Page({ searchParams, params }: PageProps) {
-  const resolvedSearchParams = await searchParams;
-  const resolvedParams = await params;
+export default function Page({ searchParams, params }: PageProps) {
+  const resolvedSearchParams = use(searchParams);
+  const resolvedParams = use(params);
 
   return (
     <div className="grid gap-y-8">

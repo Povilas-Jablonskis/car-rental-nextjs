@@ -1,3 +1,4 @@
+import { use } from "react";
 import CarList from "../_components/panels/CarList";
 import PickupDropoffPicker from "../_components/pickupDropoffPicker";
 
@@ -5,8 +6,8 @@ interface PageProps {
   searchParams: Promise<Record<string, string>>;
 }
 
-export default async function Page({ searchParams }: PageProps) {
-  const resolvedSearchParams = await searchParams;
+export default function Page({ searchParams }: PageProps) {
+  const resolvedSearchParams = use(searchParams);
 
   return (
     <>
