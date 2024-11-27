@@ -1,5 +1,4 @@
-import NegativeReviewIcon from "@/app/_components/icons/negativeReview";
-import PositiveReviewIcon from "@/app/_components/icons/positiveReview";
+import Rating from "@/app/_components/rating";
 import { Reviews } from "@prisma/client";
 import Image from "next/image";
 
@@ -31,21 +30,7 @@ export default function Review({ review }: ReviewProps) {
           <span className="font-medium text-secondary-300">
             {review.workplace}
           </span>
-          <div className="flex gap-x-0.5">
-            {[...Array(5).keys()].map((x) =>
-              x < review.score ? (
-                <PositiveReviewIcon
-                  className="size-3 sm:size-5"
-                  key={`${x}Positive`}
-                />
-              ) : (
-                <NegativeReviewIcon
-                  className="size-3 sm:size-5"
-                  key={`${x}Negative`}
-                />
-              ),
-            )}
-          </div>
+          <Rating rating={review.score} />
         </div>
         <p className="text-secondary-400">{review.description}</p>
       </div>

@@ -1,6 +1,5 @@
 import Input from "@/app/_components/controls/input";
-import NegativeReviewIcon from "@/app/_components/icons/negativeReview";
-import PositiveReviewIcon from "@/app/_components/icons/positiveReview";
+import Rating from "@/app/_components/rating";
 import formatNumber from "@/app/_helpers/formatNumber";
 
 import { Prisma } from "@prisma/client";
@@ -45,24 +44,7 @@ export default function RentalSummary({ data }: RentalSummaryProps) {
             {data.name}
           </div>
           <div className="flex flex-col gap-x-2 gap-y-1 sm:flex-row">
-            <div className="flex gap-x-0.5">
-              {[...Array(5).keys()].map((x) =>
-                x < score ? (
-                  <PositiveReviewIcon
-                    className="size-3 sm:size-5"
-                    key={`${x}Positive`}
-                  />
-                ) : (
-                  <NegativeReviewIcon
-                    className="size-3 sm:size-5"
-                    key={`${x}Negative`}
-                  />
-                ),
-              )}
-            </div>
-            <span className="font-medium text-secondary-400">
-              {data.reviews.length} Reviewers
-            </span>
+            <Rating rating={score} reviewCount={data.reviews.length} />
           </div>
         </div>
       </div>

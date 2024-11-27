@@ -1,17 +1,17 @@
 import FormInput from "@/app/_components/controls/Form/input";
-import { Control } from "react-hook-form";
-import { FormSchema } from "../../../types";
+import { useFormContext } from "react-hook-form";
+import { FormSchema } from "../../types";
 
 interface RentalInfoPickerProps extends React.HTMLAttributes<HTMLDivElement> {
-  control: Control<FormSchema>;
   type: "pickup" | "dropoff";
 }
 
 export default function RentalInfoPicker({
-  control,
   type,
   ...rest
 }: RentalInfoPickerProps) {
+  const { control } = useFormContext<FormSchema>();
+
   return (
     <div {...rest} className="grid gap-y-4">
       <label className="text-base font-semibold text-secondary-500">

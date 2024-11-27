@@ -2,13 +2,11 @@ import { CarCategory } from "@prisma/client";
 import Image from "next/image";
 import car7 from "../public/images/car7.png";
 import car8 from "../public/images/car8.png";
-import PrimaryButton from "./_components/buttons/primary";
 import RentalCarButton from "./_components/buttons/rental";
-import DateTimeLocationPicker from "./_components/dateTimeLocationPicker";
-import SwapIcon from "./_components/icons/swap";
 import Ad from "./_components/panels/ad";
 import CarList from "./_components/panels/CarList";
 import CarListTitle from "./_components/panels/CarList/title";
+import PickupDropoffPicker from "./_components/pickupDropoffPicker";
 
 export default function Home() {
   return (
@@ -31,13 +29,7 @@ export default function Home() {
           <Image className="mx-auto" priority src={car8} alt="Car" />
         </Ad>
       </div>
-      <div className="mb-9 grid gap-8 lg:grid-cols-[1fr_max-content_1fr] lg:gap-11">
-        <DateTimeLocationPicker label="Pick - Up" />
-        <PrimaryButton className="place-self-center !p-4 shadow-[0_0_50px_11px_rgba(16,50,147,0.28)]">
-          <SwapIcon />
-        </PrimaryButton>
-        <DateTimeLocationPicker label="Drop - Off" />
-      </div>
+      <PickupDropoffPicker breakpoint="lg" />
       <div className="grid gap-y-8">
         <CarList
           className="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"

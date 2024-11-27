@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export enum PaymentMethod {
-  CC = "CC",
+  CC = "Credit Card",
   PayPal = "PayPal",
   Bitcoin = "Bitcoin",
 }
@@ -91,9 +91,5 @@ export const formSchema = z
     bitcoinFormSchema,
   ])
   .and(baseSchema);
-
-export type CCFormSchema = z.infer<typeof ccFormSchema>;
-export type PayPalFormSchema = z.infer<typeof payPalFormSchema>;
-export type BitcoinFormSchema = z.infer<typeof bitcoinFormSchema>;
 
 export type FormSchema = z.infer<typeof formSchema>;

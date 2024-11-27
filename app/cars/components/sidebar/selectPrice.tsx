@@ -46,7 +46,7 @@ export default function SelectPrice() {
   }
 
   return (
-    <div className="grid gap-y-7">
+    <div className="grid gap-y-8">
       <p className="text-xs font-semibold text-secondary-300">P R I C E</p>
       <div className="flex flex-col gap-y-3">
         <Input

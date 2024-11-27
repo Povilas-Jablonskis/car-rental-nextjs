@@ -1,4 +1,5 @@
 import PrimaryButton from "@/app/_components/buttons/primary";
+import CardNumberInput from "@/app/_components/controls/cardNumberInput";
 import Checkbox from "@/app/_components/controls/checkbox";
 import FormCheckbox from "@/app/_components/controls/Form/checkbox";
 import FormInput from "@/app/_components/controls/Form/input";
@@ -7,10 +8,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { rentCar } from "../../../../_lib/actions";
 import { FormSchema, formSchema, PaymentMethod } from "../../types";
-import BitcoinForm from "./paymentMethods/bitcoinForm";
-import CreditCardForm from "./paymentMethods/creditCardForm";
-import PayPalForm from "./paymentMethods/payPalForm";
-import RentalInfoPicker from "./rentalInfo";
+import PaymentMethodComponent from "./paymentMethod";
+import RentalInfoPicker from "./rentalInfoPicker";
+import FormSection from "./section";
 
 export default function RentalForm() {
   async function onSubmit(data: FormSchema) {
@@ -20,98 +20,119 @@ export default function RentalForm() {
   const methods = useForm<FormSchema>({
     mode: "onChange",
     resolver: zodResolver(formSchema),
-    defaultValues: { paymentMethod: PaymentMethod.CC },
+    defaultValues: { paymentMethod: PaymentMethod.PayPal },
   });
   const { control, handleSubmit } = methods;
 
   return (
     <FormProvider {...methods}>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="grid gap-y-8 *:rounded-xl *:bg-white *:p-4 2xl:*:p-6"
-      >
-        <div>
-          <div className="mb-6 flex justify-between font-medium text-secondary-300 2xl:mb-8">
-            <div className="grid gap-y-1">
-              <p className="text-base font-bold text-secondary-500 sm:text-xl">
-                Billing Info
-              </p>
-              <p>Please enter your billing info</p>
-            </div>
-            <p className="sm:self-end">Step 1 of 4</p>
-          </div>
-          <div className="grid gap-5 gap-x-8 sm:grid-cols-2 sm:gap-y-6">
-            <FormInput
-              name="customerName"
-              label="Name"
-              placeholder="Your name"
+      <form onSubmit={handleSubmit(onSubmit)} className="grid gap-y-8">
+        <FormSection
+          className="grid gap-5 gap-x-8 sm:grid-cols-2 sm:gap-y-6"
+          title="Billing Info"
+          subTitle="Please enter your billing info"
+          step={1}
+        >
+          <FormInput
+            name="customerName"
+            label="Name"
+            placeholder="Your name"
+            control={control}
+          />
+          <FormInput
+            name="customerTelNumber"
+            type="tel"
+            label="Phone Number"
+            placeholder="Phone number"
+            control={control}
+          />
+          <FormInput
+            name="customerAddress"
+            label="Address"
+            placeholder="Address"
+            control={control}
+          />
+          <FormInput
+            name="customerTownCity"
+            label="Town / City"
+            placeholder="Town or city"
+            control={control}
+          />
+        </FormSection>
+        <FormSection
+          className="grid gap-y-6 2xl:gap-y-8"
+          title="Rental Info"
+          subTitle="Please select your rental date"
+          step={2}
+        >
+          <RentalInfoPicker type="pickup" />
+          <RentalInfoPicker type="dropoff" />
+        </FormSection>
+        <FormSection
+          className="grid gap-y-6"
+          title="Payment Method"
+          subTitle="Please enter your payment method"
+          step={3}
+        >
+          <PaymentMethodComponent paymentMethod={PaymentMethod.CC}>
+            <CardNumberInput
+              name="cardNumber"
+              label="Card Number"
+              placeholder="Card number"
+              inverted
               control={control}
             />
             <FormInput
-              name="customerTelNumber"
-              type="tel"
-              label="Phone Number"
-              placeholder="Phone number"
+              name="expirationDate"
+              type="date"
+              label="Expration Date"
+              placeholder="DD / MM / YY"
+              inverted
               control={control}
             />
             <FormInput
-              name="customerAddress"
-              label="Address"
-              placeholder="Address"
+              name="cardHolder"
+              label="Card Holder"
+              placeholder="Card holder"
+              inverted
               control={control}
             />
             <FormInput
-              name="customerTownCity"
-              label="Town / City"
-              placeholder="Town or city"
+              name="cvc"
+              type="number"
+              label="CVC"
+              placeholder="CVC"
+              inverted
               control={control}
             />
-          </div>
-        </div>
-        <div>
-          <div className="mb-6 flex justify-between font-medium text-secondary-300 2xl:mb-8">
-            <div className="grid gap-y-1">
-              <p className="text-base font-bold text-secondary-500 sm:text-xl">
-                Rental Info
-              </p>
-              <p>Please select your rental date</p>
-            </div>
-            <p className="sm:self-end">Step 2 of 4</p>
-          </div>
-          <div className="grid gap-y-6 2xl:gap-y-8">
-            <RentalInfoPicker type="pickup" control={control} />
-            <RentalInfoPicker type="dropoff" control={control} />
-          </div>
-        </div>
-        <div>
-          <div className="mb-6 flex justify-between font-medium text-secondary-300 2xl:mb-8">
-            <div className="grid gap-y-1">
-              <p className="text-base font-bold text-secondary-500 sm:text-xl">
-                Payment Method
-              </p>
-              <p>Please enter your payment method</p>
-            </div>
-            <p className="sm:self-end">Step 3 of 4</p>
-          </div>
-          <div className="grid gap-y-6">
-            <CreditCardForm />
-            <PayPalForm />
-            <BitcoinForm />
-          </div>
-        </div>
-        <div>
-          <div className="mb-6 grid grid-cols-[49%_auto] justify-between font-medium text-secondary-300 2xl:mb-8">
-            <div className="grid gap-y-1">
-              <p className="text-base font-bold text-secondary-500 sm:text-xl">
-                Confirmation
-              </p>
-              <p>
-                We are getting to the end. Just few clicks and your rental is
-                ready!
-              </p>
-            </div>
-            <div className="sm:self-end">Step 4 of 4</div>
-          </div>
+          </PaymentMethodComponent>
+          <PaymentMethodComponent paymentMethod={PaymentMethod.PayPal}>
+            <FormInput
+              name="email"
+              type="email"
+              label="E-mail"
+              placeholder="E-mail"
+              inverted
+              control={control}
+            />
+          </PaymentMethodComponent>
+          <PaymentMethodComponent paymentMethod={PaymentMethod.Bitcoin}>
+            <FormInput
+              name="email"
+              type="email"
+              label="E-mail"
+              placeholder="E-mail"
+              inverted
+              control={control}
+            />
+          </PaymentMethodComponent>
+        </FormSection>
+        <FormSection
+          className="grid gap-y-5 2xl:gap-y-6"
+          title="Confirmation"
+          subTitle="We are getting to the end. Just few clicks and your rental is ready!"
+          step={4}
+        >
           <div className="grid gap-y-5 2xl:gap-y-6">
             <Checkbox
               id="agreeWithMarketing"
@@ -142,7 +163,7 @@ export default function RentalForm() {
               experience ever.
             </p>
           </div>
-        </div>
+        </FormSection>
       </form>
     </FormProvider>
   );

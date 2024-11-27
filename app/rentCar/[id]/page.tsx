@@ -1,5 +1,6 @@
 "use client";
 
+import CarNotFound from "@/app/_components/carNotFound";
 import { useGetCar } from "@/app/_lib/hooks";
 import { use } from "react";
 import RentalForm from "./components/form";
@@ -18,22 +19,12 @@ export default function Page({ params }: PageProps) {
 
   if (isLoading) return <RentalFormSkeleton />;
 
-  if (!data)
-    return (
-      <div className="p-8">
-        <div className="flex flex-col items-center justify-center gap-y-2">
-          <h2 className="text-xl font-semibold">404 Not Found</h2>
-          <p>Could not find the requested car.</p>
-        </div>
-      </div>
-    );
+  if (!data) return <CarNotFound />;
 
   return (
-    <div className="p-6 2xl:p-8">
-      <div className="grid gap-8 lg:grid-cols-[auto_36%]">
-        <RentalForm />
-        <RentalSummary data={data} />
-      </div>
+    <div className="grid gap-8 lg:grid-cols-[auto_36%]">
+      <RentalForm />
+      <RentalSummary data={data} />
     </div>
   );
 }

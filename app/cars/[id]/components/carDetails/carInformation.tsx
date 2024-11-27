@@ -2,8 +2,7 @@
 
 import PrimaryButton from "@/app/_components/buttons/primary";
 import Favourite from "@/app/_components/favourite";
-import NegativeReviewIcon from "@/app/_components/icons/negativeReview";
-import PositiveReviewIcon from "@/app/_components/icons/positiveReview";
+import Rating from "@/app/_components/rating";
 import formatNumber from "@/app/_helpers/formatNumber";
 
 import { Prisma } from "@prisma/client";
@@ -24,6 +23,29 @@ export default function CarInformation({ car, ...rest }: CarInformationProps) {
       car.reviews.length,
   );
 
+  function DescriptionItem({ name, value }: { name: string; value: string }) {
+    return (
+      <div className="flex justify-between">
+        <span className="text-xs text-secondary-300 sm:text-sm 2xl:text-xl">
+          {name}
+        </span>
+        <span className="text-xs font-semibold text-secondary-500 sm:text-sm sm:text-secondary-400 2xl:text-xl">
+          {value}
+        </span>
+      </div>
+    );
+  }
+
+  function DescriptionLine({ record }: { record: Record<string, string> }) {
+    return (
+      <div className="grid grid-cols-2 gap-x-11">
+        {Object.entries(record).map(([key, value]) => (
+          <DescriptionItem key={key} name={key} value={value} />
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div
       {...rest}
@@ -36,65 +58,24 @@ export default function CarInformation({ car, ...rest }: CarInformationProps) {
         <Favourite defaultFavourite={car.favourite} />
       </div>
       <div className="flex place-items-center gap-x-2">
-        <div className="flex gap-x-0.5">
-          {[...Array(5).keys()].map((x) =>
-            x < score ? (
-              <PositiveReviewIcon
-                className="size-3 sm:size-5"
-                key={`${x}Positive`}
-              />
-            ) : (
-              <NegativeReviewIcon
-                className="size-3 sm:size-5"
-                key={`${x}Negative`}
-              />
-            ),
-          )}
-        </div>
-        <span className="font-medium text-secondary-300 sm:text-secondary-400">
-          {car.reviews.length} Reviewers
-        </span>
+        <Rating rating={score} reviewCount={car.reviews.length} />
       </div>
       <div className="mt-4 text-xs text-secondary-300 sm:text-sm sm:text-secondary-400 2xl:mt-8 2xl:text-xl 2xl:font-bold">
         {car.description}
       </div>
       <div className="my-8 grid gap-y-4">
-        <div className="grid grid-cols-2 gap-x-11">
-          <div className="flex justify-between">
-            <span className="text-xs text-secondary-300 sm:text-sm 2xl:text-xl">
-              Type Car
-            </span>
-            <span className="text-xs font-semibold text-secondary-500 sm:text-sm sm:text-secondary-400 2xl:text-xl">
-              {car.type}
-            </span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-xs text-secondary-300 sm:text-sm 2xl:text-xl">
-              Capacity
-            </span>
-            <span className="text-xs font-semibold text-secondary-500 sm:text-sm sm:text-secondary-400 2xl:text-xl">
-              {car.seats} {car.seats > 1 ? "Persons" : "Person"}
-            </span>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-x-11">
-          <div className="flex justify-between">
-            <span className="text-xs text-secondary-300 sm:text-sm 2xl:text-xl">
-              Steering
-            </span>
-            <span className="text-xs font-semibold text-secondary-500 sm:text-sm sm:text-secondary-400 2xl:text-xl">
-              {car.gear}
-            </span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-xs text-secondary-300 sm:text-sm 2xl:text-xl">
-              Gasoline{" "}
-            </span>
-            <span className="text-xs font-semibold text-secondary-500 sm:text-sm sm:text-secondary-400 2xl:text-xl">
-              {car.fuelTank}L
-            </span>
-          </div>
-        </div>
+        <DescriptionLine
+          record={{
+            "Type Car": car.type,
+            Capacity: `${car.seats} ${car.seats > 1 ? "Persons" : "Person"}`,
+          }}
+        />
+        <DescriptionLine
+          record={{
+            Steering: car.gear,
+            Gasoline: `${car.fuelTank}L`,
+          }}
+        />
       </div>
 
       <div className="mt-auto flex place-content-between">

@@ -1,5 +1,6 @@
 "use client";
 
+import CarNotFound from "@/app/_components/carNotFound";
 import { useGetCar } from "@/app/_lib/hooks";
 import Reviews from "../reviews";
 import CarInformation from "./carInformation";
@@ -17,13 +18,7 @@ export default function CarDetails({ params }: CarDetailsProps) {
 
   if (isLoading) return <CarDetailsSkeleton />;
 
-  if (!data)
-    return (
-      <div className="flex flex-col items-center justify-center gap-y-2">
-        <h2 className="text-xl font-semibold">404 Not Found</h2>
-        <p>Could not find the requested car.</p>
-      </div>
-    );
+  if (!data) return <CarNotFound />;
 
   return (
     <>
