@@ -40,7 +40,7 @@ export default function ImageSlider({ car }: ImageSliderProps) {
             src={x}
             width={0}
             height={0}
-            className={clsx("h-16 w-full rounded-xl 2xl:h-32", {
+            className={clsx("h-16 w-full cursor-pointer rounded-xl 2xl:h-32", {
               "border-2 border-primary-500 p-1 2xl:p-2": selected === idx,
             })}
             alt="Small picture"
