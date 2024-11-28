@@ -8,6 +8,29 @@ import formatNumber from "@/app/_helpers/formatNumber";
 import { Prisma } from "@prisma/client";
 import { useRouter } from "next/navigation";
 
+function DescriptionItem({ name, value }: { name: string; value: string }) {
+  return (
+    <div className="flex justify-between">
+      <span className="text-xs text-secondary-300 sm:text-sm 2xl:text-xl">
+        {name}
+      </span>
+      <span className="text-xs font-semibold text-secondary-500 sm:text-sm sm:text-secondary-400 2xl:text-xl">
+        {value}
+      </span>
+    </div>
+  );
+}
+
+function DescriptionLine({ record }: { record: Record<string, string> }) {
+  return (
+    <div className="grid grid-cols-2 gap-x-11">
+      {Object.entries(record).map(([key, value]) => (
+        <DescriptionItem key={key} name={key} value={value} />
+      ))}
+    </div>
+  );
+}
+
 interface CarInformationProps extends React.HTMLAttributes<HTMLDivElement> {
   car: Prisma.CarsGetPayload<{
     include: {
@@ -22,29 +45,6 @@ export default function CarInformation({ car, ...rest }: CarInformationProps) {
     car.reviews.reduce((prev, curr) => prev + curr.score, 0) /
       car.reviews.length,
   );
-
-  function DescriptionItem({ name, value }: { name: string; value: string }) {
-    return (
-      <div className="flex justify-between">
-        <span className="text-xs text-secondary-300 sm:text-sm 2xl:text-xl">
-          {name}
-        </span>
-        <span className="text-xs font-semibold text-secondary-500 sm:text-sm sm:text-secondary-400 2xl:text-xl">
-          {value}
-        </span>
-      </div>
-    );
-  }
-
-  function DescriptionLine({ record }: { record: Record<string, string> }) {
-    return (
-      <div className="grid grid-cols-2 gap-x-11">
-        {Object.entries(record).map(([key, value]) => (
-          <DescriptionItem key={key} name={key} value={value} />
-        ))}
-      </div>
-    );
-  }
 
   return (
     <div

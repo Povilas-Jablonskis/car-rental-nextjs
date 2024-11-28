@@ -1,5 +1,5 @@
 interface CarPropertyProps {
-  icon: React.ComponentType<React.ButtonHTMLAttributes<HTMLButtonElement>>;
+  icon: React.ComponentType<React.SVGAttributes<SVGElement>>;
   label: string;
 }
 

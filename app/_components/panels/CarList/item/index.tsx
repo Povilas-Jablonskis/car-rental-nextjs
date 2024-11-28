@@ -42,13 +42,10 @@ export default function CarListItem({
           alt="Car"
         />
         <div className="flex flex-col gap-y-4 sm:mb-6 sm:flex-row sm:place-content-between">
+          <CarProperty icon={TankSizeIcon} label={`${car.fuelTank}L`} />
+          <CarProperty icon={GearTypeIcon} label={car.gear} />
           <CarProperty
-            icon={() => <TankSizeIcon />}
-            label={`${car.fuelTank}L`}
-          />
-          <CarProperty icon={() => <GearTypeIcon />} label={car.gear} />
-          <CarProperty
-            icon={() => <SeatsIcon />}
+            icon={SeatsIcon}
             label={`${car.seats} ${car.seats > 1 ? "Persons" : "Person"}`}
           />
         </div>
