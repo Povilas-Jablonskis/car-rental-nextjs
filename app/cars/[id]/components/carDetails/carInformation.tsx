@@ -23,7 +23,7 @@ function DescriptionItem({ name, value }: { name: string; value: string }) {
 
 function DescriptionLine({ record }: { record: Record<string, string> }) {
   return (
-    <div className="grid grid-cols-2 lg:gap-x-4 2xl:gap-x-11">
+    <div className="grid grid-cols-2 gap-x-4 2xl:gap-x-11">
       {Object.entries(record).map(([key, value]) => (
         <DescriptionItem key={key} name={key} value={value} />
       ))}
