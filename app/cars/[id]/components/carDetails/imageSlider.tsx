@@ -2,50 +2,46 @@
 
 import view from "@/public/images/View.jpg";
 import view2 from "@/public/images/View2.jpg";
-import { Prisma } from "@prisma/client";
+import view3 from "@/public/images/View3.jpg";
 import clsx from "clsx";
 import Image from "next/image";
 import { useState } from "react";
 
-interface ImageSliderProps extends React.HTMLAttributes<HTMLDivElement> {
-  car: Prisma.CarsGetPayload<{
-    include: {
-      reviews: true;
-    };
-  }>;
-}
-
-export default function ImageSlider({ car }: ImageSliderProps) {
+export default function ImageSlider() {
   const [selected, setSelected] = useState(0);
 
-  const images = [car.image, view, view2];
+  const images = [view, view2, view3];
 
   return (
-    <div className="grid">
-      <div className="mb-6">
+    <div className="grid gap-y-6">
+      <div className="relative h-80 xl:h-96 xl:w-[500px]">
         <Image
           priority
-          width={0}
-          height={0}
-          className="h-60 w-full rounded-xl 2xl:h-96"
+          fill
+          className="rounded-xl object-contain xl:object-cover"
           src={images[selected]}
+          sizes="100%"
           alt="Big picture"
         />
       </div>
-      <div className="grid grid-cols-3 gap-x-5 2xl:gap-x-6">
-        {images.map((x, idx) => (
-          <Image
-            key={typeof x === "string" ? x : x.src}
-            priority
-            src={x}
-            width={0}
-            height={0}
-            className={clsx("h-16 w-full cursor-pointer rounded-xl 2xl:h-32", {
-              "border-2 border-primary-500 p-1 2xl:p-2": selected === idx,
-            })}
-            alt="Small picture"
-            onClick={() => setSelected(idx)}
-          />
+      <div className="mx-auto grid grid-cols-3 gap-x-5 xl:mx-0 xl:gap-x-6">
+        {images.map((image, index) => (
+          <div
+            key={`${index}${image.src}`}
+            className="relative h-16 w-20 rounded-xl xl:h-32 xl:w-full"
+          >
+            <Image
+              priority
+              fill
+              src={image}
+              sizes="100%"
+              className={clsx("cursor-pointer rounded-xl", {
+                "border-2 border-primary-500 p-1 xl:p-2": selected === index,
+              })}
+              alt="Small picture"
+              onClick={() => setSelected(index)}
+            />
+          </div>
         ))}
       </div>
     </div>

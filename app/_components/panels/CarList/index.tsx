@@ -39,7 +39,7 @@ export default function CarList({
       </div>
     );
 
-  const totalCars = data?.pages.flatMap((x) => x.data).length;
+  const totalCars = data?.pages.flatMap((page) => page.data).length;
 
   if (!totalCars) return <></>;
 

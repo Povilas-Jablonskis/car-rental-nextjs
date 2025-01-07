@@ -3,19 +3,19 @@ import HeartIcon from "@/app/_components/icons/heart";
 
 export default function CarDetailsSkeleton() {
   return (
-    <div className="grid gap-8 lg:grid-cols-2">
-      <div className="grid">
-        <div className="mb-6 flex h-60 rounded-xl bg-white 2xl:h-96">
+    <div className="grid gap-8 xl:grid-cols-[auto_1fr]">
+      <div className="grid gap-y-6">
+        <div className="flex h-80 rounded-xl bg-white xl:h-96 xl:w-[500px]">
           <GalleryIcon className="m-auto" width={60} height={60} />
         </div>
-        <div className="grid grid-cols-3 gap-x-6">
-          {[...Array(3).keys()].map((x) => (
+        <div className="mx-auto grid grid-cols-3 gap-x-5 xl:mx-0 xl:gap-x-6">
+          {[...Array(3).keys()].map((index) => (
             <div
-              key={x}
-              className="rounded-xl border-4 border-white p-1.5 2xl:p-4"
+              key={index}
+              className="h-16 w-20 rounded-xl border-4 border-white p-1.5 xl:h-32 xl:w-full xl:p-4"
             >
-              <div className="flex h-14 rounded-xl bg-white 2xl:h-24">
-                <GalleryIcon className="m-auto size-6 2xl:size-10" />
+              <div className="flex size-full bg-white">
+                <GalleryIcon className="m-auto size-6 xl:size-10" />
               </div>
             </div>
           ))}

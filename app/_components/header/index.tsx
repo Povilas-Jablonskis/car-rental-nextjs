@@ -42,14 +42,16 @@ export default function Header() {
           <button className="lg:hidden">
             <HamburgerIcon />
           </button>
-          <Image
-            priority
-            src={profile}
-            width={0}
-            height={0}
-            className="size-7 cursor-pointer sm:size-11"
-            alt="Profile picture"
-          />
+          <div className="relative size-7 cursor-pointer sm:size-11">
+            <Image
+              priority
+              src={profile}
+              sizes="100%"
+              fill
+              className="object-contain"
+              alt="Profile picture"
+            />
+          </div>
         </div>
       </div>
     </header>

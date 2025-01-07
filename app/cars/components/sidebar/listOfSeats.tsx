@@ -23,7 +23,7 @@ export default function ListOfSeats() {
     if (checked) {
       seats.push(e.currentTarget.value);
     } else {
-      seats = seats.filter((x) => x !== e.currentTarget.value);
+      seats = seats.filter((seat) => seat !== e.currentTarget.value);
     }
 
     if (seats.length) {
@@ -45,7 +45,7 @@ export default function ListOfSeats() {
           key={name}
           id={name}
           value={name}
-          defaultChecked={seats?.some((x) => x === name)}
+          defaultChecked={seats?.some((seat) => seat === name)}
           onChange={onChange}
           label={CarSeat[Number(name)]}
           subLabel={value}

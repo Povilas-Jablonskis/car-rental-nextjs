@@ -74,7 +74,7 @@ export function useCarTotalTypes() {
   return useQuery<Record<string, number>>({
     queryKey: ["fetchCarTotalTypes", initialData],
     queryFn: async () => {
-      const response = await fetch(`/api/cars/totalTypes`);
+      const response = await fetch("/api/cars/totalTypes");
       const result = await response.json();
       return result;
     },
@@ -84,7 +84,7 @@ export function useCarTotalTypes() {
 }
 
 export function useCarTotalSeats() {
-  let values = Object.values(CarSeat).map((x) => Number(x));
+  let values = Object.values(CarSeat).map((carSeat) => Number(carSeat));
   values = values.splice(values.length / 2, values.length / 2);
 
   const initialData = values.reduce((acc, curr) => {
@@ -94,7 +94,7 @@ export function useCarTotalSeats() {
   return useQuery<Record<number, number>>({
     queryKey: ["fetchCarTotalSeats", initialData],
     queryFn: async () => {
-      const response = await fetch(`/api/cars/totalSeats`);
+      const response = await fetch("/api/cars/totalSeats");
       const result = await response.json();
       return result;
     },

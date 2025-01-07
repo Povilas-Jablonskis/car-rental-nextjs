@@ -23,7 +23,7 @@ function DescriptionItem({ name, value }: { name: string; value: string }) {
 
 function DescriptionLine({ record }: { record: Record<string, string> }) {
   return (
-    <div className="grid grid-cols-2 gap-x-11">
+    <div className="grid grid-cols-2 lg:gap-x-4 2xl:gap-x-11">
       {Object.entries(record).map(([key, value]) => (
         <DescriptionItem key={key} name={key} value={value} />
       ))}
@@ -60,7 +60,7 @@ export default function CarInformation({ car, ...rest }: CarInformationProps) {
       <div className="flex place-items-center gap-x-2">
         <Rating rating={score} reviewCount={car.reviews.length} />
       </div>
-      <div className="mt-4 text-xs text-secondary-300 sm:text-sm sm:text-secondary-400 2xl:mt-8 2xl:text-xl 2xl:font-bold">
+      <div className="mt-4 text-xs text-secondary-300 sm:text-sm sm:text-secondary-400 2xl:mt-8 2xl:text-xl">
         {car.description}
       </div>
       <div className="my-8 grid gap-y-4">

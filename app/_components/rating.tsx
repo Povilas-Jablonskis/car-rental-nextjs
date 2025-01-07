@@ -10,16 +10,16 @@ export default function Rating({ rating, reviewCount }: RatingProps) {
   return (
     <>
       <div className="flex gap-x-0.5">
-        {[...Array(5).keys()].map((x) =>
-          x < rating ? (
+        {[...Array(5).keys()].map((index) =>
+          index < rating ? (
             <PositiveReviewIcon
               className="size-3 sm:size-5"
-              key={`${x}Positive`}
+              key={`${index}Positive`}
             />
           ) : (
             <NegativeReviewIcon
               className="size-3 sm:size-5"
-              key={`${x}Negative`}
+              key={`${index}Negative`}
             />
           ),
         )}

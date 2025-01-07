@@ -17,16 +17,34 @@ export default function Home() {
           subTitle="Ease of doing a car rental safely and reliably. Of course at a low price."
           className="bg-information-500 bg-informationImage"
         >
-          <RentalCarButton className="bg-primary-500" />
-          <Image className="mx-auto" priority src={car7} alt="Car" />
+          <RentalCarButton className="self-start bg-primary-500" />
+          <div className="relative mt-auto h-28">
+            <Image
+              priority
+              fill
+              className="object-contain object-bottom"
+              sizes="100%"
+              src={car7}
+              alt="Car"
+            />
+          </div>
         </Ad>
         <Ad
           title="Easy way to rent a car at a low price"
           subTitle="Providing cheap car rental services and safe and comfortable facilities."
           className="bg-primary-500 bg-primaryImage"
         >
-          <RentalCarButton className="bg-information-500" />
-          <Image className="mx-auto" priority src={car8} alt="Car" />
+          <RentalCarButton className="self-start bg-information-500" />
+          <div className="relative mt-auto h-28">
+            <Image
+              priority
+              fill
+              className="object-contain object-bottom"
+              sizes="100%"
+              src={car8}
+              alt="Car"
+            />
+          </div>
         </Ad>
       </div>
       <PickupDropoffPicker breakpoint="lg" />

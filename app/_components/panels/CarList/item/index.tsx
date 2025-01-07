@@ -32,16 +32,17 @@ export default function CarListItem({
         <Favourite defaultFavourite={car.favourite} />
       </div>
       <span className="font-bold text-secondary-300">{car.type}</span>
-      <div className="mb-11 mt-8 flex place-items-end sm:m-0 sm:flex-1 sm:flex-col sm:place-items-stretch">
-        <Image
-          priority
-          width={0}
-          height={0}
-          className="m-auto max-h-16 w-auto sm:mb-11 sm:mt-8"
-          src={car.image}
-          alt="Car"
-        />
-        <div className="flex flex-col gap-y-4 sm:mb-6 sm:flex-row sm:place-content-between">
+      <div className="mb-11 mt-8 flex gap-x-4 sm:m-0 sm:flex-1 sm:flex-col sm:place-items-stretch">
+        <div className="relative h-28 flex-1 sm:mb-11 sm:mt-8 sm:flex-auto">
+          <Image
+            priority
+            fill
+            className="object-contain"
+            src={car.image}
+            alt="Car"
+          />
+        </div>
+        <div className="flex flex-col justify-center gap-y-4 sm:mb-6 sm:flex-row sm:place-content-between">
           <CarProperty icon={TankSizeIcon} label={`${car.fuelTank}L`} />
           <CarProperty icon={GearTypeIcon} label={car.gear} />
           <CarProperty

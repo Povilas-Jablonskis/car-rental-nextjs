@@ -10,7 +10,7 @@ export default function Favourite({ defaultFavourite }: FavouriteProps) {
   const [favourite, setFavourite] = useState(defaultFavourite);
 
   return (
-    <button onClick={() => setFavourite((x) => !x)}>
+    <button onClick={() => setFavourite((fav) => !fav)}>
       <HeartIcon
         className={clsx({
           "*:fill-transparent *:stroke-secondary-300": !favourite,

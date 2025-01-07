@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import type { Metadata } from "next";
 import Footer from "./_components/footer";
 import Header from "./_components/header";
@@ -14,15 +15,16 @@ export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body
-        className={`${plus_jakarta_sans.className} bg-background text-xs sm:text-sm`}
+        className={clsx(
+          plus_jakarta_sans.className,
+          "bg-background text-xs sm:text-sm",
+        )}
       >
-        <div className="flex h-screen flex-col">
-          <Providers>
-            <Header />
-            {props.children}
-            <Footer />
-          </Providers>
-        </div>
+        <Providers>
+          <Header />
+          {props.children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

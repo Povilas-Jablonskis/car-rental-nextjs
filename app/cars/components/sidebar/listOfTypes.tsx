@@ -23,7 +23,7 @@ export default function ListOfTypes() {
     if (checked) {
       types.push(e.currentTarget.value);
     } else {
-      types = types.filter((x) => x !== e.currentTarget.value);
+      types = types.filter((type) => type !== e.currentTarget.value);
     }
 
     if (types.length) {
@@ -43,7 +43,7 @@ export default function ListOfTypes() {
           key={name}
           id={name}
           value={name}
-          defaultChecked={types?.some((x) => x === name)}
+          defaultChecked={types?.some((type) => type === name)}
           onChange={onChange}
           label={name}
           subLabel={value}

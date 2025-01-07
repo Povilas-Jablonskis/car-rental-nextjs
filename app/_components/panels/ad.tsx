@@ -15,7 +15,7 @@ export default function Ad({
     <div
       {...rest}
       className={clsx(
-        "rounded-lg bg-cover bg-no-repeat p-6 pb-2.5 text-white",
+        "flex h-[360px] flex-col rounded-lg bg-cover bg-no-repeat p-6 pb-0 text-white",
         className,
       )}
     >

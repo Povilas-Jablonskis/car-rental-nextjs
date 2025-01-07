@@ -9,14 +9,15 @@ interface ReviewProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function Review({ review }: ReviewProps) {
   return (
     <div className="flex gap-x-4">
-      <Image
-        priority
-        width={0}
-        height={0}
-        className="size-11 self-start sm:size-14"
-        src={review.image}
-        alt="Profile picture"
-      />
+      <div className="relative size-11 sm:size-14">
+        <Image
+          priority
+          fill
+          className="object-contain"
+          src={review.image}
+          alt="Profile picture"
+        />
+      </div>
       <div className="flex flex-1 flex-col">
         <div className="mb-2 flex place-content-between">
           <span className="text-base font-semibold text-secondary-500 sm:text-xl sm:font-bold">

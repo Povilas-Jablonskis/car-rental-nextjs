@@ -22,7 +22,7 @@ export default function Page({ params }: PageProps) {
   if (!data) return <CarNotFound />;
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[auto_36%]">
+    <div className="grid gap-8 xl:grid-cols-[auto_36%]">
       <RentalForm />
       <RentalSummary data={data} />
     </div>

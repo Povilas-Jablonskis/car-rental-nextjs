@@ -14,12 +14,12 @@ export async function GET(request: NextRequest) {
 
     const typesRaw = searchParams.get("types");
     const types = typesRaw
-      ? typesRaw.split(",").map((x) => CarType[x as keyof typeof CarType])
+      ? typesRaw.split(",").map((type) => CarType[type as keyof typeof CarType])
       : undefined;
 
     const seatsRaw = searchParams.get("seats");
     const seats = seatsRaw
-      ? seatsRaw.split(",").map((x) => Number(x))
+      ? seatsRaw.split(",").map((seat) => Number(seat))
       : undefined;
 
     const priceRaw = searchParams.get("price");
@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
     const categories = categoriesRaw
       ? categoriesRaw
           .split(",")
-          .map((x) => CarCategory[x as keyof typeof CarCategory])
+          .map((category) => CarCategory[category as keyof typeof CarCategory])
       : undefined;
 
     const count = await prisma.cars.count({
