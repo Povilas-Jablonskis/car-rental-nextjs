@@ -1,15 +1,7 @@
 "use client";
 
-import Image from "next/image";
-
-import profile from "@/public/images/profile.png";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import HamburgerIcon from "../icons/hamburger";
-import HeartIcon from "../icons/heart";
-import SettingsIcon from "../icons/settings";
-import NavButton from "./navButton";
-import NotificationsButton from "./notificationsButton";
 import SearchInput from "./searchInput";
 
 export default function Header() {
@@ -29,7 +21,7 @@ export default function Header() {
           </Link>
           {!rentCarPath && <SearchInput />}
         </div>
-        <div className="flex items-center justify-between gap-x-5">
+        {/* <div className="flex items-center justify-between gap-x-5">
           <div className="hidden gap-x-5 lg:flex">
             <NavButton>
               <HeartIcon className="*:fill-secondary-400" />
@@ -52,7 +44,7 @@ export default function Header() {
               alt="Profile picture"
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </header>
   );

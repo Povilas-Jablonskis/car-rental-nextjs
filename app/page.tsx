@@ -6,7 +6,6 @@ import RentalCarButton from "./_components/buttons/rental";
 import Ad from "./_components/panels/ad";
 import CarList from "./_components/panels/CarList";
 import CarListTitle from "./_components/panels/CarList/title";
-import PickupDropoffPicker from "./_components/pickupDropoffPicker";
 
 export default function Home() {
   return (
@@ -47,7 +46,7 @@ export default function Home() {
           </div>
         </Ad>
       </div>
-      <PickupDropoffPicker breakpoint="lg" />
+      {/* <PickupDropoffPicker breakpoint="lg" /> */}
       <div className="grid gap-y-8">
         <CarList
           className="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"

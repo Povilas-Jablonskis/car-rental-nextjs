@@ -1,6 +1,5 @@
 import { use } from "react";
 import CarList from "../_components/panels/CarList";
-import PickupDropoffPicker from "../_components/pickupDropoffPicker";
 
 interface PageProps {
   searchParams: Promise<Record<string, string>>;
@@ -11,7 +10,7 @@ export default function Page({ searchParams }: PageProps) {
 
   return (
     <>
-      <PickupDropoffPicker breakpoint="xl" />
+      {/* <PickupDropoffPicker breakpoint="xl" /> */}
       <div className="grid gap-y-8">
         <CarList
           className="sm:grid-cols-2 xl:grid-cols-3"
