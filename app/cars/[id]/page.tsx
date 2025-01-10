@@ -16,7 +16,7 @@ export default function Page({ searchParams, params }: PageProps) {
   const resolvedParams = use(params);
 
   return (
-    <div className="grid gap-y-8">
+    <div className="grid gap-y-8 px-6 py-8 2xl:p-8">
       <CarDetails params={resolvedParams} />
       <CarList
         className="sm:grid-cols-2 xl:grid-cols-3"
