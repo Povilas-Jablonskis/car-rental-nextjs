@@ -1,13 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import SearchInput from "./searchInput";
 
 export default function Header() {
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
-  const rentCarPath = pathname.includes("rentCar");
+  // const rentCarPath = pathname.includes("rentCar");
 
   return (
     <header className="border border-navbar/40 bg-white px-6 py-8 2xl:py-10 2xl:pe-8 2xl:ps-16">
@@ -19,7 +17,7 @@ export default function Header() {
           >
             MORENT
           </Link>
-          {!rentCarPath && <SearchInput />}
+          {/* {!rentCarPath && <SearchInput />} */}
         </div>
         {/* <div className="flex items-center justify-between gap-x-5">
           <div className="hidden gap-x-5 lg:flex">
